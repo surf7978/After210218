@@ -29,10 +29,20 @@ public class EmpList {
 	
 	// 전체 이름조회
 	public void getNames() {
-		for(int i = 0; i<list.size(); i++) {
-			System.out.println(list.get(i).name);
+		for(Emp e : list) { //확장 for문 사용하기
+			System.out.println(e.name);
 		}
 	}
+	
+	//전체 이름만 리턴
+	public String getNameStr() {
+		String names = "";
+		//for()
+		
+		return names;
+	}
+	
+	
 	// list 조회
 	public ArrayList<Emp> getList(){
 		return list;

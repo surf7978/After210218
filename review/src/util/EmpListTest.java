@@ -16,6 +16,9 @@ public class EmpListTest {
 		//사원의 이름만 출력
 		emplist.getNames();
 		
+		//사원이름 출력
+		System.out.println(emplist.getNameStr());
+		
 		//전체 리스트 출력
 		System.out.println(emplist.getList());
 	}

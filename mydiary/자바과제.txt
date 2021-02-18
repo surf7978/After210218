@@ -1,0 +1,15 @@
+과제
+1. 웹서버와 WAS의 차이
+2. 문자열 -> 경로, 파일명 추출
+3. 스트링을 Date로 변환
+4. 날짜 계산 : LocalDate
+	Date today = new Date();
+	Date meetDay = DateUtil.addDay(today, 100);
+	System.out.println(DateUtil.toStr(meetDay));
+5. List
+	//사원이름 출력
+	System.out.println(emplist.getNameStr());
+6. map
+	전체이름만조회
+7. 메모장 관리
+
