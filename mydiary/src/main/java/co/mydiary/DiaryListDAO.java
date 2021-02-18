@@ -97,13 +97,29 @@ public class DiaryListDAO implements DAO {
 	//수정
 	public void update(DiaryVO vo) {
 		//to do : 수정
+		int size = list.size();
+		for (int idx = 0; idx < size; idx++) {
+			if (list.get(idx).getWdate().equals(vo.getWdate())) {
+				list.set(idx, vo);
+				System.out.println("1건 수정됨");
+				writeFile();
+			}
+		}
 	}
 
 	//해당 날짜의 내용을 삭제하고 삭제가 되었으면 1을 리턴
 	public int delete(String date) {
 		int result = 0;
 		//to do : 삭제
-		
+		int size = list.size();
+		for (int idx = 0; idx < size; idx++) {
+			if (list.get(idx).getWdate().equals(date)) {
+				list.remove(idx);
+				result = 1;
+				System.out.println(result+"건 삭제됨");
+				break;
+			}
+		}
 		return result;
 	}
 
@@ -124,7 +140,13 @@ public class DiaryListDAO implements DAO {
 	public List<DiaryVO> selectContent(String content) {
 		List<DiaryVO> searchlist = new ArrayList<>();
 		//to do : 내용으로 검색
-		
+		int size = list.size();
+		for (int idx = 0; idx < size; idx++) {
+			if (list.get(idx).getContents().equals(content)) {
+				searchlist = list;
+				break;
+			}
+		}
 		return searchlist;
 	}
 
