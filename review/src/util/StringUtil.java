@@ -11,7 +11,7 @@ public class StringUtil {
 	public static String toStr(int i) { 
 		return Integer.toString(i);
 	}
-	//3. String -> 확장자 : LastIndexOf사용해서 . 찾고 substr으로 출력 
+	//3. String -> 확장자 : lastIndexOf사용해서 . 찾고 substr으로 출력 
 	public static String getExt(String s) {
 		String result = null;
 		if(s.lastIndexOf(".")+1 == 0) {
