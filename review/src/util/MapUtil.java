@@ -15,7 +15,7 @@ public class MapUtil {
 	}
 	//수정
 	public void updEmp(Emp emp) {
-		
+		map.put(emp.id, emp);
 	}
 	//삭제
 	public void delEmp(Integer id) {
@@ -32,7 +32,11 @@ public class MapUtil {
 		return map;
 	}
 	
-	//전체조회 map.keySet() 해서 Iterator하고 for문 사용
+	//전체조회(이름만) map.keySet() 해서 Iterator하고 for문 사용
 	public void getList() {
+		for(Integer m : map.keySet()) {
+			String names = map.get(m).name;
+			System.out.print(names+" ");
+		}
 	}
 }
