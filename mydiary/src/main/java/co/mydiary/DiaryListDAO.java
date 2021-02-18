@@ -103,6 +103,7 @@ public class DiaryListDAO implements DAO {
 				list.set(idx, vo);
 				System.out.println("1건 수정됨");
 				writeFile();
+				break;
 			}
 		}
 	}
@@ -117,6 +118,7 @@ public class DiaryListDAO implements DAO {
 				list.remove(idx);
 				result = 1;
 				System.out.println(result+"건 삭제됨");
+				writeFile();
 				break;
 			}
 		}
