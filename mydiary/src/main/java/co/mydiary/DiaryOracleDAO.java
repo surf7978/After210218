@@ -26,8 +26,6 @@ public class DiaryOracleDAO implements DAO {
 			System.out.println(n+"건 등록");
 		} catch (SQLException e) {
 			e.printStackTrace();
-		}finally {
-			JdbcUtil.disconnect(conn);
 		}
 		return n;
 	}
@@ -42,8 +40,6 @@ public class DiaryOracleDAO implements DAO {
 			pstmt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
-		}finally {
-			JdbcUtil.disconnect(conn);
 		}
 	}
 
@@ -58,8 +54,6 @@ public class DiaryOracleDAO implements DAO {
 			System.out.println(n+"건 삭제");
 		} catch (SQLException e) {
 			e.printStackTrace();
-		}finally {
-			JdbcUtil.disconnect(conn);
 		}
 		return n;
 	}
@@ -79,8 +73,6 @@ public class DiaryOracleDAO implements DAO {
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
-		}finally {
-			JdbcUtil.disconnect(conn);
 		}
 		return vo;
 	}
@@ -102,8 +94,6 @@ public class DiaryOracleDAO implements DAO {
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
-		}finally {
-			JdbcUtil.disconnect(conn);
 		}
 		return list;
 	}
@@ -124,8 +114,6 @@ public class DiaryOracleDAO implements DAO {
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
-		}finally {
-			JdbcUtil.disconnect(conn);
 		}
 		return list;
 	}

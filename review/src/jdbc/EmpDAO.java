@@ -3,6 +3,9 @@ package jdbc;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * VO = Value Object = DTO = DO
@@ -77,5 +80,56 @@ public class EmpDAO {
 			//5. close(연결해제)
 			JdbcUtil.disconnect(conn);
 		}
+	}
+	
+	public EmpVO selectOne(String id) {
+		JdbcUtil.connect();
+		String sql = "SELECT Employee_id, Last_name, Email, Hire_date, Job_id"
+				+ " FROM employees WHERE employee_id = ?";
+		EmpVO vo = null;
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, id);
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				vo = new EmpVO();
+				vo.setEmployee_id(rs.getString("Employee_id"));
+				vo.setLast_name(rs.getString("Last_name"));
+				vo.setEmail(rs.getString("Email"));
+				vo.setHire_date(rs.getString("Hire_date"));
+				vo.setJob_id(rs.getString("Job_id"));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JdbcUtil.disconnect(conn);
+		}
+		return vo;
+	}
+	
+	public List<EmpVO> selectAll() {
+		ArrayList<EmpVO> list = new ArrayList<>();
+		JdbcUtil.connect();
+		String sql = "SELECT Employee_id, Last_name, Email, Hire_date, Job_id"
+				+ " FROM employees ORDER BY Hire_date DESC";
+		EmpVO vo = null;
+		try {
+			pstmt = conn.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			while(rs.next()) {
+				vo = new EmpVO();
+				vo.setEmployee_id(rs.getString("Employee_id"));
+				vo.setLast_name(rs.getString("Last_name"));
+				vo.setEmail(rs.getString("Email"));
+				vo.setHire_date(rs.getString("Hire_date"));
+				vo.setJob_id(rs.getString("Job_id"));
+				list.add(vo);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JdbcUtil.disconnect(conn);
+		}
+		return list;
 	}
 }
