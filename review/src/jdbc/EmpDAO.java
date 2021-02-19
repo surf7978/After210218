@@ -56,7 +56,20 @@ public class EmpDAO {
 			//1. connect(연결)
 			JdbcUtil.connect();
 			//2. statement(구문)
+			String sql = "UPDATE employees SET"//
+					+ " last_name=?"//
+					+ ", email=?"//
+					+ ", hire_date=?"//
+					+ ", job_id=?"//
+					+ " WHERE employee_id = ?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, vo.getLast_name());
+			pstmt.setString(2, vo.getEmail());
+			pstmt.setString(3, vo.getHire_date());
+			pstmt.setString(4, vo.getJob_id());
+			pstmt.setString(5, vo.getEmployee_id());
 			//3. execute(실행)
+			pstmt.executeUpdate();
 			//4. resultset(select라면 조회결과처리)
 		} catch(Exception e) {
 			e.printStackTrace();
