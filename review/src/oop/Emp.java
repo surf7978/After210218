@@ -3,7 +3,7 @@ package oop;
 public class Emp extends Member {
 	String dept;
 	String ho;
-	
+
 	@Override
 	public void sal() {
 		System.out.println("직원 급여");

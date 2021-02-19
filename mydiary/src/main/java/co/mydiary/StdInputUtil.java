@@ -56,7 +56,7 @@ public class StdInputUtil {
 			String a = "";
 			while (true) {
 				a = br.readLine();
-				if (a == null || a.trim().equals(".end")) {
+				if (a == null || a.trim().equals("...")) {
 					break;
 				}
 				result.append(a).append("\n");

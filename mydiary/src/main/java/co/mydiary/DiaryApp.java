@@ -90,7 +90,6 @@ public class DiaryApp {
 		
 		//리스트에 저장
 		dao.insert(vo);
-		System.out.println(vo);
 	}
 
 	// 수정

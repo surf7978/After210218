@@ -82,9 +82,10 @@ public class DiaryOracleDAO implements DAO {
 		List<DiaryVO> list = new ArrayList<>();
 		DiaryVO vo = null;
 		String sql = "SELECT * FROM diary WHERE contents like ?";
+		//String sql = "SELECT * FROM diary WHERE contents like '%' || ? || '%'";
 		try {
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, content);
+			pstmt.setString(1, "%"+content+"%");
 			rs = pstmt.executeQuery();
 			while(rs.next()) {
 				vo = new DiaryVO();
