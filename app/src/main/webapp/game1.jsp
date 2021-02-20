@@ -25,6 +25,10 @@
 		console.log(e.target.innerHTML, '클릭됨')
 		var len = document.getElementsByTagName("div").length;
 		console.log(len, '개');
+		this.remove();
+		if(len==1){
+			console.log('div 전부 제거');
+		}
 	}
 	//클릭 된 태그 삭제하고 모두 제거됬으면 다 제거됬다고 콘솔에 출력되게 하기 
 </script>
