@@ -33,6 +33,37 @@
 		table.append(tr);
 	}
 	
+	//부서정보를 저장
+	var depts = [ //
+			{ //
+			department_id:10 //
+			, department_name:"Administration" //
+			, managet_id:200 //
+			, location_id:1700 //
+			}, //
+			{ //
+				department_id:20 //
+				, department_name:"Marketing" //
+				, managet_id:201 //
+				, location_id:1800 //
+			} //
+				];
+	
+	var member = { name:"hong", hobbys:["독서", "달리기"]};
+	//첫번째 취미 출력
+	document.getElementById("result").innerHTML += "첫번째 취미 : "+ member.hobbys[0];
+	
+	var members = [
+			{ name:"hong", hobbys:["독서", "달리기"]},
+			{ name:"kang", hobbys:["스키", "음악"]},
+				  ]
+	//두번째 사람의 첫번째 취미 출력
+	document.getElementById("result").innerHTML += "<br/>두번째 사람의 첫번째 취미 : "+ members[1].hobbys[0];
+	
+	//typeof = 타입확인 
+	//+ JSON.stringify() = 다른 곳에 정보줄때 JSON구조의 스트링으로 변환해서 넘겨줌
+	//+ JSON.parse(), 받은 정보 사용할때 다시 변환함
+
 </script>
 </body>
 </html>
