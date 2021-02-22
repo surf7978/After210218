@@ -37,12 +37,18 @@
 		xhttp.onload = function(){
 			// 결과 파싱해서(parse)
 			var rank = JSON.parse(xhttp.responseText);
-			console.log(rank)
+			//console.log(rank)
 			var movieList = rank.movieInfoResult.movieInfo;
 			console.log(movieList)
 			//for문 사용 이름만 출력
-			document.getElementById("result").innerHTML += "<hr><div>"+ movieList.movieNm +"</div>";	
-					
+			document.getElementById("result").innerHTML += "<hr><div>"+ movieList.movieNm+" "+movieList.movieNmEn +"</div>";	
+			document.getElementById("result").innerHTML += "<div>"+ movieList.directors[0].peopleNm+" "+movieList.directors[0].peopleNmEn +"</div>";
+			document.getElementById("result").innerHTML += "<div>"+ movieList.audits[0].watchGradeNm+"</div>";
+			for(field of movieList.actors){
+				//console.log(field)
+				document.getElementById("result").innerHTML += 
+					"<div>"+ field.peopleNm+" "+field.peopleNmEn +"</div>";	
+			}
 		};
 		var url="http://www.kobis.or.kr/kobisopenapi/webservice/rest/movie/searchMovieInfo.json?key=f5eef3421c602c6cb7ea224104795888&movieCd="+e;
 		xhttp.open("get", url);
