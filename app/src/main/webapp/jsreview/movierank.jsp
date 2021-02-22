@@ -41,11 +41,8 @@
 			var movieList = rank.movieInfoResult.movieInfo;
 			console.log(movieList)
 			//for문 사용 이름만 출력
-			for(field of movieList){
-				console.log(field)
-				document.getElementById("result").innerHTML += 
-					"<div>"+ field.movieNm+" : "+field.movieCd+"</div>";	
-			}
+			document.getElementById("result").innerHTML += "<hr><div>"+ movieList.movieNm +"</div>";	
+					
 		};
 		var url="http://www.kobis.or.kr/kobisopenapi/webservice/rest/movie/searchMovieInfo.json?key=f5eef3421c602c6cb7ea224104795888&movieCd="+e;
 		xhttp.open("get", url);
