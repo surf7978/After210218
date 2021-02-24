@@ -21,8 +21,17 @@
 						console.log(result.boxOfficeResult.dailyBoxOfficeList[0].movieNm)
 						//$("#rank").append(result.boxOfficeResult.dailyBoxOfficeList[0].movieNm+"&nbsp;"+result.boxOfficeResult.dailyBoxOfficeList[0].movieCd)
 						for(field of result.boxOfficeResult.dailyBoxOfficeList){
-							$("#rank").append(field.movieNm+"&nbsp;"+field.movieCd+"<br/>");
-							//$("#rank").append("<input id="+field.movieCd+">");
+							$("#rank").append("<div id="+field.movieCd+">"+field.movieNm+"&nbsp;"+field.movieCd+"</div><br/>");
+//							var cd = field.movieCd;
+//							$("#"+cd+"\"").click(function(cd){
+//								$.ajax({
+//									url : "http://www.kobis.or.kr/kobisopenapi/webservice/rest/movie/searchMovieInfo.json?key=f5eef3421c602c6cb7ea224104795888&movieCd="+cd,
+//									success : furnction(result){
+//										console.log("인포성공");
+//									},
+//									dataType : "json"
+//								});
+//							});
 						}
 					},
 					dataType : "json"
