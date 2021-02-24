@@ -4,4 +4,14 @@
 
 <web-app>
   <display-name>Archetype Created Web Application</display-name>
+  <servlet>
+  	<servlet-name>EmpList</servlet-name>
+  	<display-name>EmpList</display-name>
+  	<description></description>
+  	<servlet-class>emp.EmpList</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>EmpList</servlet-name>
+  	<url-pattern>/EmpList</url-pattern>
+  </servlet-mapping>
 </web-app>

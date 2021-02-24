@@ -1,9 +1,14 @@
 <%@ page contentType="text/html; charset=utf-8" %>
 <html>
 <head>
-	<style></style>
+	<title>index.jsp</title>
+<script>
+	var n = localStorage.getItem("name");
+	if(n!=""){
+		alert(n);
+	}
+</script>
 </head>
-<div></div>
 <body>
 <h2>Hello World!</h2>
 	<div id="result">이벤트 테스트</div>
