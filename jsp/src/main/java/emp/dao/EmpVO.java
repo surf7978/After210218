@@ -1,4 +1,6 @@
-package emp;
+package emp.dao;
+
+import java.sql.Date;
 
 import lombok.Data;
 
@@ -14,7 +16,7 @@ public class EmpVO {
 	private String last_name;
 	private String email;
 	private String phone_number;
-	private String hire_date;
+	private Date hire_date;
 	private String job_id;
 	private String salary;
 	private String commission_pct;

@@ -15,6 +15,14 @@
       <scope>test</scope>
     </dependency>
     
+    <!-- jstl -->
+<dependency>
+    <groupId>javax.servlet</groupId>
+    <artifactId>jstl</artifactId>
+    <version>1.2</version>
+</dependency>
+    
+    
     <!-- lombok에서 깔아줌 -->
   	<dependency>
 		<groupId>org.projectlombok</groupId>

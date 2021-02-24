@@ -1,0 +1,12 @@
+<%= %>표현식             				el표현식
+request.getParmeter("num")				${param.num}
+request.getParameterValues("hobby")			${parmaValues.hobby}
+request.getCookis()[0]				${cookie.num.value}
+	.getName("num")
+	.getValue
+request.getHeader("User-Agent")			${header["User-Agent"]}
+request.getHeaderValues()				${headerValues}
+request.getContextPath()				${pageContext.request.contextPath}
+request.getAttribute("name")				${requestScope.name} / ${name}
+session.getAttribute("name")				${sessionScope.name}
+application.getAttribute("name")			${applicationScope.name}

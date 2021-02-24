@@ -1,28 +1,28 @@
-package emp;
+package emp.serv;
 
 import java.io.IOException;
-import java.util.ArrayList;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-/**
- * Servlet implementation class EmpList
- */
-public class EmpList extends HttpServlet {
+import emp.dao.EmpDAO;
+import emp.dao.EmpVO;
+
+public class EmailCheck extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		ArrayList<EmpVO> list = EmpDAO.getInstance().selectList();
-		request.setAttribute("list", list);
-		request.getRequestDispatcher("/emp/list.jsp").forward(request, response);
+		EmpVO empVO=EmpDAO.getInstance().selectOneByEmail(request.getParameter("email"));
+		response.setCharacterEncoding("utf-8");
+		if(empVO == null) {
+			response.getWriter().print("사용가능한 이메일");
+		}else {
+			response.getWriter().print("사용불가");
+		}
 	}
-
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
-
 }
