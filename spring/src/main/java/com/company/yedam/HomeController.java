@@ -41,10 +41,13 @@ public class HomeController {
 		return "home";
 	}
 	
+	//스프링은 이것만 달아주면 됨
 	@RequestMapping("/ajaxEmpList")
 	@ResponseBody
 	public List<EmpVO> ajaxEmpList(){
 		return EmpDAO.getInstance().selectList();
 	}
+	
+	
 	
 }
