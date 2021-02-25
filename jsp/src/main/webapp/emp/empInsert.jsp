@@ -54,10 +54,21 @@
 	$(function(){
 		$("#btnEmail").click(function(){
 			$.ajax({
-				url : "EmailCheck?email="+$("[name=email]").val(),
-				success : function(obj){
-					console.log(obj)
-					$("#emailResult").html(obj);
+				url : "EmailCheck",
+				data : "email="+$("[name=email]").val(),
+				dataType : "xml",
+				success : function(response){
+					//console.log(response)
+					/*gson
+					if(response.email){
+						$("#emailResult").html("<font color='blue'>사용가능</font>");
+					}else{
+						$("#emailResult").html("<font color='red'>사용불가능</font>");
+					}
+					*/
+					
+					/*xml*/
+					$("#emailResult").html($(response).find("email").text());
 				}
 			});
 		});
@@ -67,8 +78,8 @@
 				url : "EmpSearch",
 				success : function(result){
 					var url = "EmpSearch?manager_id="+$("[name=manager_id]").val();//+"&name="+$("[name=name]").val();
-					console.log(result);
-					console.log(url);
+					//console.log(result);
+					//console.log(url);
 					window.open(url, "width:100, height:100", "_blank");
 				}
 			});
