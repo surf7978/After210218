@@ -12,9 +12,9 @@
 </head>
 <body>
 <h3 id="top">사원등록</h3>
-<c:set var="url" value="../EmpInsert"/>
+<c:set var="url" value="./EmpInsert"/>
 <c:if test="${not empty empVO.employee_id }">
-<c:set var="url" value="../EmpUpdate"/>
+<c:set var="url" value="EmpUpdate"/>
 </c:if>
 <form action="${url }" method="post" name="frm">
 	employee_id <input type="number" name="employee_id" value="${empVO.employee_id }" <c:if test="${not empty empVO.employee_id}"> readonly="readonly" </c:if> ><br>

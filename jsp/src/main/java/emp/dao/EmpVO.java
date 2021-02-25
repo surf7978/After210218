@@ -2,7 +2,10 @@ package emp.dao;
 
 import java.sql.Date;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
 //@Getter
@@ -10,6 +13,10 @@ import lombok.Data;
 //@ToString
 //@AllArgsConstructor
 //@NoArgsConstructor
+
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class EmpVO {
 	private String employee_id;
 	private String first_name;
