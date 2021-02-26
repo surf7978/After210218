@@ -1,7 +1,26 @@
 package com.company.yedam.di;
 
 public class SamsungTV  implements TV {
-
+	
+	Speaker speaker;
+	
+	
+	
+	
+	public SamsungTV() {}
+	
+	public SamsungTV(Speaker speaker) {
+		this.speaker = speaker;
+	}
+	
+	public void setSpeaker(Speaker speaker) {
+		this.speaker = speaker;
+	}
+	
+	
+	
+	
+	
 	public void powerOn() {
 		System.out.println("SamsungTV powerOn");
 	}
@@ -9,9 +28,9 @@ public class SamsungTV  implements TV {
 		System.out.println("SamsungTV powerDown");
 	}
 	public void volumeUp() {
-		System.out.println("SamsungTV volumeUp");
+		speaker.volumeUp();
 	}
 	public void volumeDown() {
-		System.out.println("SamsungTV volumeDown");
+		speaker.volumeDown();
 	}	
 }

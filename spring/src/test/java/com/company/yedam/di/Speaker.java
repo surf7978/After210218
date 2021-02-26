@@ -1,10 +1,6 @@
 package com.company.yedam.di;
 
-public interface TV {
-
-	void powerOn();
-
-	void powerOff();
+public interface Speaker {
 
 	void volumeUp();
 

@@ -6,29 +6,32 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import org.springframework.stereotype.Component;
+
 /**
  * VO = Value Object = DTO = DO
  * DAO = Data Access Object
  */
+@Component
 public class EmpDAO {
 	
 	Connection conn;
 	PreparedStatement pstmt;
 	ResultSet rs;
 	
-	//singletone
-	private static EmpDAO instance;
-	public static EmpDAO getInstance() {
-		if(instance == null) {
-			instance = new EmpDAO();
-		}
-		return instance;
-	}
+	//singletone @Component사용하면 싱글톤 필요없음
+//	private static EmpDAO instance;
+//	public static EmpDAO getInstance() {
+//		if(instance == null) {
+//			instance = new EmpDAO();
+//		}
+//		return instance;
+//	}
 	
 	public void insert(EmpVO vo) {
 		try {
 			//1. connect(연결)
-			JdbcUtil.connect();
+			conn = JdbcUtil.connect();
 			//2. statement(구문)
 			/**
 			 * String sql = "insert values('"+vo.getFirst_name()+"');
@@ -42,14 +45,18 @@ public class EmpDAO {
 					+ ", email"//
 					+ ", hire_date"//
 					+ ", job_id"//
+					+ ", First_name"//
+					+ ", Phone_number"//
 					+ ")"//
-					+ " VALUES(?,?,?,?,?)";
+					+ " VALUES(?,?,?,?,?,?,?)";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, vo.getEmployee_id());
 			pstmt.setString(2, vo.getLast_name());
 			pstmt.setString(3, vo.getEmail());
 			pstmt.setDate(4, vo.getHire_date());
 			pstmt.setString(5, vo.getJob_id());
+			pstmt.setString(6, vo.getFirst_name());
+			pstmt.setString(7, vo.getPhone_number());
 			//3. execute(실행)
 			int r = pstmt.executeUpdate();
 			//4. resultset(select라면 조회결과처리)
@@ -65,20 +72,24 @@ public class EmpDAO {
 	public void update(EmpVO vo) {
 		try {
 			//1. connect(연결)
-			JdbcUtil.connect();
+			conn = JdbcUtil.connect();
 			//2. statement(구문)
 			String sql = "UPDATE employees SET"//
-					+ " last_name=?"//
-					+ ", email=?"//
-					+ ", hire_date=?"//
-					+ ", job_id=?"//
+					+ " last_name = ?"//
+					+ ", email = ?"//
+					+ ", hire_date = ?"//
+					+ ", job_id = ?"//
+					+ ", First_name = ?"//
+					+ ", Phone_number = ?"//
 					+ " WHERE employee_id = ?";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, vo.getLast_name());
 			pstmt.setString(2, vo.getEmail());
 			pstmt.setDate(3, vo.getHire_date());
 			pstmt.setString(4, vo.getJob_id());
-			pstmt.setString(5, vo.getEmployee_id());
+			pstmt.setString(5, vo.getFirst_name());
+			pstmt.setString(6, vo.getPhone_number());
+			pstmt.setString(7, vo.getEmployee_id());
 			//3. execute(실행)
 			pstmt.executeUpdate();
 			//4. resultset(select라면 조회결과처리)

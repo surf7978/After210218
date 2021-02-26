@@ -6,18 +6,13 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import org.springframework.stereotype.Component;
+
+@Component
 public class JobDAO {
 	PreparedStatement pstmt;
 	ResultSet rs;
 	
-	//singletone
-		private static JobDAO instance;
-		public static JobDAO getInstance() {
-			if(instance == null) {
-				instance = new JobDAO();
-			}
-			return instance;
-		}
 	
 	public ArrayList<JobVO> selectList() {
 		ArrayList<JobVO> list = new ArrayList<>();

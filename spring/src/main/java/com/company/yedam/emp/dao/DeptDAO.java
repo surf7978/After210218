@@ -6,18 +6,12 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import org.springframework.stereotype.Component;
+
+@Component
 public class DeptDAO {
 	PreparedStatement pstmt;
 	ResultSet rs;
-	
-	//singletone
-		private static DeptDAO instance;
-		public static DeptDAO getInstance() {
-			if(instance == null) {
-				instance = new DeptDAO();
-			}
-			return instance;
-		}
 	
 	public ArrayList<DeptVO> selectList() {
 		ArrayList<DeptVO> list = new ArrayList<>();

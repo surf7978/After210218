@@ -1,6 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!-- 걍 세팅요약 
+	컨테이너 : <beans> 객체
+				설정파일 방법 : 1. applicationContext.xml 방식 : <bean> 태그사용
+							2. @Configuration @Bean 방식 : 클래스하나 만듬
+ -->
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
-	<bean id="tv" class="com.company.yedam.di.LgTV" />
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
+	<!-- 
+	<bean id="speaker" class="com.company.yedam.di.SonySpeaker"></bean>
+	<bean id="tv" class="com.company.yedam.di.LgTV" scope="prototype">
+	 -->
+		<!-- <constructor-arg name="speaker" ref="speaker"></constructor-arg> --><!-- 생성자방식 name=SamsungTV에 Speaker변수명 / ref=bean의 아이디명 -->
+	<!-- 
+		<property name="speaker" ref="speaker"></property>
+	 -->
+		<!-- setter방식 -->
+	<!-- 
+	</bean>
+	 -->
+	
+	<!-- 보통 @Component @Autowired 방식이 더 많이 쓰임 -->
+	<context:component-scan base-package="com.company"></context:component-scan><!-- base-package="com.company" = com.company 다 검색 -->
+	
+	
 </beans>
