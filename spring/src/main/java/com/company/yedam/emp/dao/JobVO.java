@@ -8,4 +8,5 @@ public class JobVO {
 	String job_title;
 	int min_salary;
 	int max_salary;
+	
 }

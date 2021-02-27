@@ -12,11 +12,11 @@
 <script>
 	$(function(){
 		$("btnSelect").click(function(){
-			var empid = $(this).closest("div");
+			var empid = $(this).closest(".row").find("span").eq(0).html();
 			console.log(empid)
-			//var firstName = empid.val();
+			var firstName = $(this).closest(".row").find("span").eq(3).html();
 			opener.document.frm.manager_id.value = empid;
-			$(opener.document).find('[name=manager_id]').val(empid);
+			$(opener.document).find('[name=manager_name]').val(firstName);
 			window.close();
 		})
 	})
