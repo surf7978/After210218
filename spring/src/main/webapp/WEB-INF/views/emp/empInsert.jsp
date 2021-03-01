@@ -43,7 +43,7 @@
 				<br>
 	manager_id  
 	<input type="text" name="manager_id">
-	<input type="text" name="name">
+	<input type="text" name="manager_name">
 	<button type="button" onclick="window.open('empSearch','emp','width=500, height=800')">사원검색</button><br>	
 	<button type="submit">등록</button>
 	<button type="reset">초기화</button>
