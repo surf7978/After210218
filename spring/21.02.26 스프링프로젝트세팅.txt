@@ -1,0 +1,31 @@
+http://maven.apache.org/download.cgi
+아파치에서 메이븐 바이너리 다운로드 후, Dev파일에 압출풀기
+
+C:\Dev\apache-maven-3.6.3\bin
+시스템환경변수에 mvn파일 링크걸기
+환경변수>>Path편집>>새로만들기 링크 붙여넣기
++cmd에서 mvn -version 명령어로 패스걸린지 확인가능
+
++이클립스 안쓰고 도스창으로 만들어보기
+(
+http://maven.apache.org/archetypes/maven-archetype-webapp/ 여기서
+mvn archetype:generate -DarchetypeGroupId=org.apache.maven.archetypes -DarchetypeArtifactId=maven-archetype-webapp -DarchetypeVersion=1.4 이거복사
+cmd에서 cd c:/ >>>cd Dev >>> cd workspace >>mkdir test >>> cd test >>>mvn archetype:generate -DarchetypeGroupId=org.apache.maven.archetypes -DarchetypeArtifactId=maven-archetype-webapp -DarchetypeVersion=1.4하기 이렇게 하면 다 다운로드 받음>>>
+Define value for property 'groupId': 는 com.yedam+도메인거꾸로쓰기>>> Define value for property 'artifactId':는 www >>>Confirm properties configuration: 걍 엔터누르면 디폴트값들어감
++만들어진거 확인 하는 법 tree /f
+>>>cd www >>>> mvn compile
+)
+
+http://maven.apache.org/archetypes/maven-archetype-quickstart/여기서 Maven Quickstart Archetype로 다시함
+mvn archetype:generate -DarchetypeGroupId=org.apache.maven.archetypes -DarchetypeArtifactId=maven-archetype-quickstart -DarchetypeVersion=1.4 이걸로 다시 만듬
+cmd에서 c:\Dev\workspace\TEST>mvn archetype:generate -DarchetypeGroupId=org.apache.maven.archetypes -DarchetypeArtifactId=maven-archetype-quickstart -DarchetypeVersion=1.4하기>>>위에꺼 다시하면 됨
+>>>Define value for property 'groupId': app
+Define value for property 'artifactId': app >>>  cd app >>> mvn compile
+에러떳는데 환경변수 path에 jdk 깔아줘야함
+C:\Program Files\Java\jdk1.8.0_271\bin임
++패스 맨 위로 옮기기
++도스창 닫고 다시 실행해아함 c:\Dev\workspace\TEST\app>mvn compile >>>tree /f로 확인 >>>mvn package로 배포용 만들기 target에 app-1.0-SNAPSHOT.jar 배포파일 생성됨
+>>>cd target>>>move app-1.0-SNAPSHOT.jar>>java -cp target/app.jar com.yedam.App 하면 되야하는데 에러뜸
+
++jar파일 깨질때 C:\Users\admin\.m2여기에 메이븐 저장되니까 C:\Users\admin\.m2\repository\org\springframework\spring-core여기에 https://mvnrepository.com/에서 받은 파일 다시 풀어주면됨
+

@@ -6,17 +6,13 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>emp/empList.jsp</title>
+<title>emp/deptList.jsp</title>
 </head>
 <body>
-<h3>사원목록</h3>
-<c:forEach items="${list }" var="emp">
-	<span>${emp.employee_id }</span>
-	<span>${emp.last_name }</span>
-	<span>${emp.first_name }</span>
-	<span>${emp.email }</span>
-	<span>${emp.salary } </span>
-	<span><fmt:formatDate value="${emp.hire_date }" pattern="yyyy-mm"/></span>
+<h3>부서목록</h3>
+<c:forEach items="${list }" var="dept">
+	<span>${dept.department_id }</span>
+	<span>${dept.department_name }</span>
 	<br />
 </c:forEach>
 </body>
