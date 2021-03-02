@@ -4,11 +4,8 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.company</groupId>
-	<artifactId>yedam</artifactId>
-	<name>spring</name>
-	<!-- 
-	 <name>springEmp</name>
-	 -->
+	<artifactId>emp</artifactId>
+	<name>springEmp</name>
 	<packaging>war</packaging>
 	<version>1.0.0-BUILD-SNAPSHOT</version>
 	<properties>
@@ -85,11 +82,8 @@
 		<!-- Servlet -->
 		<dependency>
 			<groupId>javax.servlet</groupId>
-			<artifactId>servlet-api</artifactId>
-			<!-- 
+			<artifactId>javax.servlet-api</artifactId>
 			<version>3.1.0</version>
-			 -->
-			 <version>2.5</version>
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
