@@ -8,19 +8,6 @@
 <head>
 <meta charset="UTF-8">
 <title>emp/empSearch.jsp</title>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script>
-	$(function(){
-		$("btnSelect").click(function(){
-			var empid = $(this).closest(".row").find("span").eq(0).html();
-			console.log(empid)
-			var firstName = $(this).closest(".row").find("span").eq(3).html();
-			opener.document.frm.manager_id.value = empid;
-			$(opener.document).find('[name=manager_name]').val(firstName);
-			window.close();
-		})
-	})
-	</script>
 </head>
 <body>
 <c:forEach items="${list }" var="emp">  <!-- for(EmpVO emp : list) -->
@@ -35,4 +22,17 @@
 	</div>
 </c:forEach>
 </body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+	$(function(){
+		$("btnSelect").click(function(){
+			var empid = $(this).closest(".row").find("span").eq(0).html();
+			console.log(empid)
+			var firstName = $(this).closest(".row").find("span").eq(2).html();
+			opener.document.frm.manager_id.value = empid;
+			$(opener.document).find('[name=manager_name]').val(firstName);
+			window.close();
+		})
+	})
+</script>
 </html>

@@ -3,9 +3,11 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xmlns:beans="http://www.springframework.org/schema/beans"
 	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop"
 	xsi:schemaLocation="http://www.springframework.org/schema/mvc https://www.springframework.org/schema/mvc/spring-mvc.xsd
 		http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
-		http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
+		http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.3.xsd">
 
 	<!-- DispatcherServlet Context: defines this servlet's request-processing infrastructure -->
 	
@@ -23,6 +25,25 @@
 	
 	<context:component-scan base-package="com.company.yedam" />
 	
+	
+	<!-- Namespaces에서 aop설정 체크해야가능
+	<beans:bean id="logAdvice" class="com.company.yedam.common.LogAdvice" />
+	<beans:bean id="afterAdvice" class="com.company.yedam.common.AfterAdvice" />		
+		<aop:config>
+			<aop:pointcut expression="execution(* com.company.yedam..*Impl.*(..))" id="allpointcut" />
+			<aop:aspect ref="logAdvice">--><!-- 위에 bean id="logAdvice" 값 따라감-->
+	 <!-- 
+				<aop:before method="printLog" pointcut-ref="allpointcut" />
+			</aop:aspect>
+			<aop:aspect ref="afterAdvice">
+				<aop:after-returning method="afterLog" pointcut-ref="allpointcut" returning="returnObj" />  --><!-- aop:after-returning = 정상일때 출력 -->
+	<!-- 
+			</aop:aspect>
+		</aop:config>
+	 -->
+	 
+	<!-- 위에꺼 다 자동으로 걸어주는 법 @기반으로 설정하는 법 -->
+	<aop:aspectj-autoproxy />
 	
 	
 </beans:beans>
