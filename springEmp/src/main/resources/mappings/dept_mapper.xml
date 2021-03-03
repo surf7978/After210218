@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.yedam.emp.service.impl.EmpMapper">
-	<select id="getSearchEmp" parameterType="emp45890" resultType="emp45890">
+<mapper namespace="com.yedam.emp.service.impl.DeptMapper">
+	<select id="getSearchDept" parameterType="dept43673" resultType="dept43673">
 		SELECT     
 			e.Employee_id
 			, e.First_name
@@ -16,7 +16,7 @@
 			, e.Phone_number
 			, d.department_name
 			, j.job_title
-	    FROM employees e, departments d, jobs j
+	    FROM departments e, departments d, jobs j
 	    WHERE e.department_id = d.department_id
 	    AND e.job_id = j.job_id
 	    <where>
@@ -32,8 +32,8 @@
 	    </where>
 	    ORDER BY Hire_date DESC
 	</select>
-	<insert id="insertEmp" parameterType="emp45890">
-		INSERT INTO employees(
+	<insert id="insertDept" parameterType="dept43673">
+		INSERT INTO departments(
 							employee_id
 							, First_name
 							, last_name
@@ -59,8 +59,8 @@
 							</if>
 							)
 	</insert>
-	<update id="updateEmp" parameterType="emp45890">
-		UPDATE employees 
+	<update id="updateDept" parameterType="dept43673">
+		UPDATE departments 
 			<set>
 			 <if test="first_name != null">			 First_name = #{first_name}</if>
 			 <if test="last_name != null">			 , last_name = #{last_name}</if>
@@ -72,12 +72,12 @@
 			</set>
 		WHERE employee_id = #{employee_id}
 	</update>
-	<delete id="deleteEmp" parameterType="emp45890">
+	<delete id="deleteDept" parameterType="dept43673">
 		DELETE 
-		FROM employees 
+		FROM departments 
 		WHERE employee_id = #{employee_id}
 	</delete>
-	<select id="getEmp" parameterType="emp45890" resultType="emp45890">
+	<select id="getDept" parameterType="dept43673" resultType="dept43673">
 		SELECT
 			Employee_id     
 			, First_name
@@ -89,13 +89,7 @@
 			, Manager_id
 			, Department_id
 			, Phone_number
-		FROM employees 
+		FROM departments 
 		WHERE Employee_id = #{employee_id}
 	</select>
 </mapper>
-<!-- 과제 
-	job,dept-mapper.xml 만들기 +job,deptMapper인터페이스도 만들기
-	부서명으로 검색
-	매니저 아이디로 검색
-	CITY, MANAGER의 last_name 보이는 목록 +CITY는 locations 테이블에 있음
- -->
