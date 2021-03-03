@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="EmpDAO">
+	<select id="getSearchEmp" parameterType="com.yedam.emp.EmpVO" resultType="com.yedam.emp.EmpVO">
+		SELECT     
+			Employee_id
+			, First_name
+			, Last_name
+			, Email
+			, Hire_date
+			, Job_id
+			, Salary
+			, Manager_id
+			, Department_id
+			, Phone_number
+			 FROM employees ORDER BY Hire_date DESC
+	</select>
+	<insert id="insertEmp" parameterType="com.yedam.emp.EmpVO">
+		INSERT INTO employees(
+							employee_id
+							, First_name
+							, last_name
+							, email
+							, hire_date
+							, job_id
+							, Phone_number
+							, Department_id
+							) VALUES(
+							#{employee_id}
+							, #{first_name}
+							, #{last_name}
+							, #{email}
+							, #{hire_date}
+							, #{job_id}
+							, #{Phone_number}
+							, #{Department_id}
+							)
+	</insert>
+	
+</mapper>

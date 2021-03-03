@@ -11,30 +11,27 @@ import com.yedam.emp.service.EmpService;
 @Service
 public class EmpServiceImpl implements EmpService {
 	
-	@Autowired EmpSpringDAO dao;
+	//@Autowired EmpSpringDAO dao;
+	@Autowired EmpMybatisDAO dao;
 	
 	@Override
 	public int insertEmp(EmpVO vo) {
-		// TODO Auto-generated method stub
-		return 0;
+		return dao.insertEmp(vo);
 	}
 
 	@Override
 	public int updateEmp(EmpVO vo) {
-		// TODO Auto-generated method stub
-		return 0;
+		return dao.updateEmp(vo);
 	}
 
 	@Override
 	public int deleteEmp(EmpVO vo) {
-		// TODO Auto-generated method stub
-		return 0;
+		return dao.deleteEmp(vo);
 	}
 
 	@Override
 	public EmpVO getEmp(EmpVO vo) {
-		// TODO Auto-generated method stub
-		return null;
+		return dao.getEmp(vo);
 	}
 
 	@Override
