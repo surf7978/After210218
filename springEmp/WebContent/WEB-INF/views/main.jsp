@@ -7,7 +7,10 @@
 <title>views/main.jsp</title>
 </head>
 <body>
+<a href="getSearchEmp">사원조회</a>
+<a href="getSearchDept">부서조회</a>
+<a href="getSearchJob">업무조회</a>
 메인페이지입니다.
-<img src="./images/Hydrangeas.jpg">
+<img src="./resources/images/Hydrangeas.jpg">
 </body>
 </html>

@@ -1,4 +1,4 @@
-package com.yedam.emp.service.Impl;
+package com.yedam.emp.service.impl;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -32,11 +32,11 @@ public class EmpSpringDAO {
 									+ ", last_name = ?"//
 									+ ", email = ?"//
 									+ ", hire_date = ?"//
-									+ ", job_id = ?"//
 									+ ", Phone_number = ?"//
-									+ ", Department_id"//
+									//+ ", job_id = ?"//
+									//+ ", Department_id=?"//
 									+ " WHERE employee_id = ?";
-	private final String DELETE_EMP="DELETE employees WHERE employee_id = ?";
+	private final String DELETE_EMP="DELETE FROM employees WHERE employee_id = ?";
 	private final String GET_EMP="SELECT"//
 									+ " Employee_id"//
 									+ ", Last_name"//
@@ -85,9 +85,9 @@ public class EmpSpringDAO {
 									, vo.getLast_name()//
 									, vo.getEmail()//
 									, vo.getHire_date()//
-									, vo.getJob_id()//
 									, vo.getPhone_number()//
-									, vo.getDepartment_id()//
+									//, vo.getJob_id()//
+									//, vo.getDepartment_id()//
 									, vo.getEmployee_id()//
 							);
 		return result;

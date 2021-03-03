@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yedam.emp.service.impl.DeptMapper">
+	<select id="getSearchDept" parameterType="dept43673" resultType="dept43673">
+		SELECT     
+			e.Employee_id
+			, e.First_name
+			, e.Last_name
+			, e.Email
+			, e.Hire_date
+			, e.job_id
+			, e.Salary
+			, e.Manager_id
+			, e.Department_id
+			, e.Phone_number
+			, d.department_name
+			, j.job_title
+	    FROM departments e, departments d, jobs j
+	    WHERE e.department_id = d.department_id
+	    AND e.job_id = j.job_id
+	    <where>
+	    	<if test="department_id != null and department_id != ''">
+	    		department_id = #{department_id}
+	    	</if>
+	    	<if test="job_id != null and job_id != ''">
+	    		AND job_id = #{job_id} 
+	    	</if>
+	    	<if test="first_name != null and first_name != ''">
+	    		AND upper(first_name) LIKE '%'||upper(#{first_name})||'%'
+	    	</if>
+	    </where>
+	    ORDER BY Hire_date DESC
+	</select>
+	<insert id="insertDept" parameterType="dept43673">
+		INSERT INTO departments(
+							employee_id
+							, First_name
+							, last_name
+							, email
+							, hire_date
+							, job_id
+							, Phone_number
+							, Department_id
+							<if test="manager_id != null">
+							, manager_id
+							</if>
+							) VALUES(
+							#{employee_id}
+							, #{first_name}
+							, #{last_name}
+							, #{email}
+							, #{hire_date}
+							, #{job_id}
+							, #{phone_number}
+							, #{department_id}
+							<if test="manager_id != null">
+							, #{manager_id}
+							</if>
+							)
+	</insert>
+	<update id="updateDept" parameterType="dept43673">
+		UPDATE departments 
+			<set>
+			 <if test="first_name != null">			 First_name = #{first_name}</if>
+			 <if test="last_name != null">			 , last_name = #{last_name}</if>
+			 <if test="email != null">				 , email = #{email}</if>
+			 <if test="hire_date != null">			 , hire_date = #{hire_date}</if>
+			 <if test="phone_number != null">		 , Phone_number = #{phone_number}</if>
+			 <if test="job_id != null">				 , job_id = #{job_id}</if>
+			 <if test="department_id != null">		 , Department_id = #{department_id}</if>
+			</set>
+		WHERE employee_id = #{employee_id}
+	</update>
+	<delete id="deleteDept" parameterType="dept43673">
+		DELETE 
+		FROM departments 
+		WHERE employee_id = #{employee_id}
+	</delete>
+	<select id="getDept" parameterType="dept43673" resultType="dept43673">
+		SELECT
+			Employee_id     
+			, First_name
+			, Last_name
+			, Email
+			, Hire_date
+			, Job_id
+			, Salary
+			, Manager_id
+			, Department_id
+			, Phone_number
+		FROM departments 
+		WHERE Employee_id = #{employee_id}
+	</select>
+</mapper>

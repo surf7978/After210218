@@ -1,0 +1,5 @@
+AOP = 컨트롤러와 서비스 사이에 적용됨
+1.Advice 클래스 : 어떤 공통 로직을 언제 적용할 것인가
+2.JoinPoint : 모든 서비스 메소드 / PointCut : 공통로직을 적용할 특정메소드를 필터링
+3.Weaving : JoinPoint와 Advice를 연결해줌
+4.프록시 = 어드바이스+서비스

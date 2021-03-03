@@ -6,7 +6,7 @@ import lombok.Data;
 public class JobVO {
 	String job_id;
 	String job_title;
-	int min_salary;
-	int max_salary;
+	String min_salary;
+	String max_salary;
 	
 }

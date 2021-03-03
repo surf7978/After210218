@@ -6,18 +6,48 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>emp/empList.jsp</title>
+<title>views/emp/getSearchEmp.jsp</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+	$(function(){
+		$(".btnSelect").on("click",function(){
+			var empid = $(this).closest(".row").find("span").eq(0).html();
+			console.log(empid)
+			var firstName = $(this).closest(".row").find("span").eq(2).html();
+			opener.document.frm.manager_id.value = empid;
+			$(opener.document).find('[name=manager_name]').val(firstName);
+			window.close();
+		})
+	})
+</script>
 </head>
 <body>
 <h3>사원목록</h3>
+<div class="row" style="font-size:20px;">
+		<span style="color:red;">id</span>
+		<span>name </span>
+		<span>email</span>
+		<span>salary</span>
+		<span>hire_date</span>
+		<span style="color:red;">department_id</span>
+		<span style="color:blue;">department_name</span>
+		<span style="color:green;">job_title</span>
+	</div>
+	<hr>
 <c:forEach items="${list }" var="emp">
-	<span>${emp.employee_id }</span>
-	<span>${emp.last_name }</span>
-	<span>${emp.first_name }</span>
-	<span>${emp.email }</span>
-	<span>${emp.salary } </span>
-	<span><fmt:formatDate value="${emp.hire_date }" pattern="yyyy-mm"/></span>
-	<br />
+	<div class="row">
+		<span style="color:red;">${emp.employee_id }</span>
+		<a href="getEmp?employee_id=${emp.employee_id }">${emp.last_name }${emp.first_name }</a>
+		<span>${emp.email }</span>
+		<span>${emp.salary } </span>
+		<span><fmt:formatDate value="${emp.hire_date }" pattern="yyyy-MM"/></span>
+		<span style="color:red;">${emp.department_id }</span>
+		<span style="color:blue;">${emp.department_name }</span>
+		<span style="color:green;">${emp.job_title }</span>
+		<span><button type="button" class="btnSelect">선택</button></span>
+	</div>
 </c:forEach>
+<a href="insertEmp">사원추가</a>
+<a href="../springEmp/">메인으로</a>
 </body>
 </html>

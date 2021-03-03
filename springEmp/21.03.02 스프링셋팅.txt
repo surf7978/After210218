@@ -1,0 +1,9 @@
+웹 다이나믹 프로젝트로 생성
+스프일 >>>메이븐으로 컨버트
+자바EE툴 >>>제너레이트
+src 폴더에 main test폴더 추가 + 각폴더에 java resources폴더 추가
+빌드패스에서 source제거후 test output꺼 target>>test-class로 설정하기
+web.xml 설정하기
+WEB-INF / spring 폴더에 spring been context 프로젝트파일만들기
+spring been context 프로젝트파일=servlet-context.xml 설정
+src/main/resources 패키기 안에 config폴더 만들기+root-context.xml 스프링 빈 파일만들기
