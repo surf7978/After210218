@@ -1,4 +1,4 @@
-package com.yedam.emp.service.Impl;
+package com.yedam.emp.service.impl;
 
 import java.util.List;
 
@@ -12,7 +12,8 @@ import com.yedam.emp.service.EmpService;
 public class EmpServiceImpl implements EmpService {
 	
 	//@Autowired EmpSpringDAO dao;
-	@Autowired EmpMybatisDAO dao;
+	//@Autowired EmpMybatisDAO dao;
+	@Autowired EmpMapper dao;
 	
 	@Override
 	public int insertEmp(EmpVO vo) {

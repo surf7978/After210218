@@ -13,4 +13,9 @@
 		<!-- 오라클 컬럼이 first_name 를 VO firstName 처럼 카멜케이스로 변환 -->
 		<setting name="mapUnderscoreToCamelCase" value="false" />
 	</settings>
+	<typeAliases>
+		<typeAlias type="com.yedam.emp.EmpVO" alias="emp45890"/>
+		<typeAlias type="com.yedam.emp.DeptVO" alias="dept43673"/>
+		<typeAlias type="com.yedam.emp.JobVO" alias="job5468"/>
+	</typeAliases>
 </configuration>

@@ -23,7 +23,7 @@
 	이름 : ${emp.last_name } ${emp.first_name }<br />
 	이메일 : ${emp.email }<br />
 	급여 : ${emp.salary } <br />
-	입사일 : <fmt:formatDate value="${emp.hire_date }" pattern="yyyy-mm"/><br />
+	입사일 : <fmt:formatDate value="${emp.hire_date }" pattern="yyyy-MM"/><br />
 	<a href="getSearchEmp">목록으로</a>
 	<button id="btnUpd">수정</button>
 	<a href="deleteEmp?employee_id=${emp.employee_id }">삭제</a>

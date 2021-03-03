@@ -1,4 +1,4 @@
-package com.yedam.emp.service.Impl;
+package com.yedam.emp.service.impl;
 
 import java.util.List;
 
@@ -13,19 +13,18 @@ public class EmpMybatisDAO {
 	@Autowired SqlSessionTemplate sqlSession;
 	
 	public int insertEmp(EmpVO empVO) {
-		return 0;
+		return sqlSession.insert("EmpDAO.insertEmp", empVO);
 	}
 	public int updateEmp(EmpVO empVO) {
-		return 0;
+		return sqlSession.update("EmpDAO.updateEmp", empVO);
 	}
 	public int deleteEmp(EmpVO empVO) {
-		return 0;
+		return sqlSession.delete("EmpDAO.deleteEmp", empVO);
 	}
 	public EmpVO getEmp(EmpVO empVO) {
-		return null;
+		return sqlSession.selectOne("EmpDAO.getEmp", empVO);
 	}
 	public List<EmpVO> getSearchEmp(EmpVO empVO) {
-		System.out.println("mybatis 실행테스트");
 		return sqlSession.selectList("EmpDAO.getSearchEmp", empVO);
 	}
 }

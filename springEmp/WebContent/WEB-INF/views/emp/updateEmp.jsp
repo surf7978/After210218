@@ -58,7 +58,7 @@
 	<input type="text" name="manager_id">
 	<input type="text" name="manager_name">
 	<button type="button" id="btngetSearchEmp">사원검색</button><br>	
-	<button type="submit">등록</button>
+	<button type="submit">수정</button>
 	<button type="reset">초기화</button><br/>
 	<a href="getSearchEmp">목록으로</a>
 </form>

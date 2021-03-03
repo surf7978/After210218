@@ -25,14 +25,16 @@
 <h3>사원목록</h3>
 <c:forEach items="${list }" var="emp">
 	<div class="row">
-	<span>${emp.employee_id }</span>
-	<a href="getEmp?employee_id=${emp.employee_id }">
-	${emp.last_name }${emp.first_name }</a>
-	<span>${emp.email }</span>
-	<span>${emp.salary } </span>
-	<span><fmt:formatDate value="${emp.hire_date }" pattern="yyyy-mm"/></span>
-	<span><button type="button" class="btnSelect">선택</button></span>
+		<span style="color:red;">${emp.employee_id }</span>
+		<a href="getEmp?employee_id=${emp.employee_id }">${emp.last_name }${emp.first_name }</a>
+		<span>${emp.email }</span>
+		<span>${emp.salary } </span>
+		<span><fmt:formatDate value="${emp.hire_date }" pattern="yyyy-MM"/></span>
+		<span style="color:red;">${emp.department_id }</span>
+		<span><button type="button" class="btnSelect">선택</button></span>
 	</div>
 </c:forEach>
+<a href="insertEmp">사원추가</a>
+<a href="../springEmp/">메인으로</a>
 </body>
 </html>

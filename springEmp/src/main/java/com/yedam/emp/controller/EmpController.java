@@ -11,23 +11,29 @@ import com.yedam.emp.DeptVO;
 import com.yedam.emp.EmpVO;
 import com.yedam.emp.JobVO;
 import com.yedam.emp.service.DeptService;
-import com.yedam.emp.service.EmpService;
 import com.yedam.emp.service.JobService;
+import com.yedam.emp.service.impl.EmpMapper;
 
 @Controller
 public class EmpController {
 	
-	@Autowired EmpService empService;
+	//@Autowired EmpService empService;
 	@Autowired DeptService deptService;
 	@Autowired JobService jobService;
 	
-	@RequestMapping("/")
+	@Autowired EmpMapper empService;
+	//@Autowired DeptMapper deptService;
+	//@Autowired JobMapper jobService;
+	
+	@RequestMapping("/") //이건 다른컨트롤러 만들어도 하나만 적어줘야함 =유니크 속성
 	public String main() {
 		return "main";
 	}
 	
 	@GetMapping("/insertEmp") //등록페이지로 이동
-	public String insertEmp(EmpVO vo) {
+	public String insertEmp(EmpVO empVO, Model model, DeptVO deptVO, JobVO jobVO) {
+		model.addAttribute("deptList",deptService.getSearchDept(deptVO));
+		model.addAttribute("jobList",jobService.getSearchJob(jobVO));
 		return "/emp/insertEmp";
 	}
 	@PostMapping("/insertEmp") //등록처리
