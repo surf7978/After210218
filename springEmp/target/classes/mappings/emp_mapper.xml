@@ -97,5 +97,5 @@
 	job,dept-mapper.xml 만들기 +job,deptMapper인터페이스도 만들기
 	부서명으로 검색
 	매니저 아이디로 검색
-	CITY, MANAGER의 last_name 보이는 목록
+	CITY, MANAGER의 last_name 보이는 목록 +CITY는 locations 테이블에 있음
  -->
