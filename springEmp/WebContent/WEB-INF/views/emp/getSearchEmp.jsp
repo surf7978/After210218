@@ -23,6 +23,17 @@
 </head>
 <body>
 <h3>사원목록</h3>
+<div class="row" style="font-size:20px;">
+		<span style="color:red;">id</span>
+		<span>name </span>
+		<span>email</span>
+		<span>salary</span>
+		<span>hire_date</span>
+		<span style="color:red;">department_id</span>
+		<span style="color:blue;">department_name</span>
+		<span style="color:green;">job_title</span>
+	</div>
+	<hr>
 <c:forEach items="${list }" var="emp">
 	<div class="row">
 		<span style="color:red;">${emp.employee_id }</span>
@@ -31,6 +42,8 @@
 		<span>${emp.salary } </span>
 		<span><fmt:formatDate value="${emp.hire_date }" pattern="yyyy-MM"/></span>
 		<span style="color:red;">${emp.department_id }</span>
+		<span style="color:blue;">${emp.department_name }</span>
+		<span style="color:green;">${emp.job_title }</span>
 		<span><button type="button" class="btnSelect">선택</button></span>
 	</div>
 </c:forEach>

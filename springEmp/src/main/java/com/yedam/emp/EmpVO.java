@@ -30,5 +30,8 @@ public class EmpVO {
 	private String manager_id;
 	private String department_id;
 	
+	private String department_name;
+	private String job_title;
+	
 	//게터세터만들때 lombok깔면 자동으로 만들어줘서 갱신할때 좋음
 }

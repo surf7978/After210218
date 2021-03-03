@@ -4,17 +4,21 @@
 <mapper namespace="com.yedam.emp.service.impl.EmpMapper">
 	<select id="getSearchEmp" parameterType="emp45890" resultType="emp45890">
 		SELECT     
-			Employee_id
-			, First_name
-			, Last_name
-			, Email
-			, Hire_date
-			, job_id
-			, Salary
-			, Manager_id
-			, Department_id
-			, Phone_number
-	    FROM employees
+			e.Employee_id
+			, e.First_name
+			, e.Last_name
+			, e.Email
+			, e.Hire_date
+			, e.job_id
+			, e.Salary
+			, e.Manager_id
+			, e.Department_id
+			, e.Phone_number
+			, d.department_name
+			, j.job_title
+	    FROM employees e, departments d, jobs j
+	    WHERE e.department_id = d.department_id
+	    AND e.job_id = j.job_id
 	    <where>
 	    	<if test="department_id != null and department_id != ''">
 	    		department_id = #{department_id}
@@ -89,3 +93,9 @@
 		WHERE Employee_id = #{employee_id}
 	</select>
 </mapper>
+<!-- 과제 
+	job,dept-mapper.xml 만들기 +job,deptMapper인터페이스도 만들기
+	부서명으로 검색
+	매니저 아이디로 검색
+	CITY, MANAGER의 last_name 보이는 목록
+ -->
