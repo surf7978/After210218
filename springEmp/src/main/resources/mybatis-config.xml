@@ -17,5 +17,6 @@
 		<typeAlias type="com.yedam.emp.EmpVO" alias="emp45890"/>
 		<typeAlias type="com.yedam.emp.DeptVO" alias="dept43673"/>
 		<typeAlias type="com.yedam.emp.JobVO" alias="job5468"/>
+		<package name="com.yedam.emp" />
 	</typeAliases>
 </configuration>

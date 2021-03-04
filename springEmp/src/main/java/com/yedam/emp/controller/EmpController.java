@@ -4,24 +4,27 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.yedam.emp.DeptVO;
+import com.yedam.emp.EmpSearchVO;
 import com.yedam.emp.EmpVO;
 import com.yedam.emp.JobVO;
+import com.yedam.emp.common.Paging;
 import com.yedam.emp.service.DeptService;
+import com.yedam.emp.service.EmpService;
 import com.yedam.emp.service.JobService;
-import com.yedam.emp.service.impl.EmpMapper;
 
 @Controller
 public class EmpController {
 	
-	//@Autowired EmpService empService;
+	@Autowired EmpService empService;
 	@Autowired DeptService deptService;
 	@Autowired JobService jobService;
 	
-	@Autowired EmpMapper empService;
+	//@Autowired EmpMapper empService;
 	//@Autowired DeptMapper deptService;
 	//@Autowired JobMapper jobService;
 	
@@ -32,6 +35,8 @@ public class EmpController {
 	
 	@GetMapping("/insertEmp") //등록페이지로 이동
 	public String insertEmp(EmpVO empVO, Model model, DeptVO deptVO, JobVO jobVO) {
+//		deptVO.setStart(1);
+//		deptVO.setEnd(1000);
 		model.addAttribute("deptList",deptService.getSearchDept(deptVO));
 		model.addAttribute("jobList",jobService.getSearchJob(jobVO));
 		return "/emp/insertEmp";
@@ -61,13 +66,45 @@ public class EmpController {
 		return "redirect:/getSearchEmp";
 	}
 	
+	//3. @PathVariable
+	//@GetMapping("/getEmp/{employee_id}") 
 	@GetMapping("/getEmp") //단건조회
-	public String getEmp(EmpVO vo, Model model) {
+	public String getEmp(
+						Model model
+						//2. 속성으로 대체 @=어노테이션
+						//, HttpServletRequest request
+//						, @RequestParam(value = "id"
+//										,  required = false
+//										, defaultValue = "100") String employee_id
+						//3. @PathVariable
+//						, @PathVariable String employee_id
+						,@ModelAttribute("employee") EmpVO vo
+						) {
+		//1. getParameter
+		//String employee_id = request.getParameter("employee_id");
+		
+//		EmpVO vo = new EmpVO();
+//		vo.setEmployee_id(employee_id);
+		
 		model.addAttribute("emp", empService.getEmp(vo));
 		return "/emp/getEmp";
 	}
 	@GetMapping("/getSearchEmp") //검색조회
-	public String getSearchEmp(EmpVO vo, Model model) {
+	public String getSearchEmp(EmpSearchVO vo, Paging paging, Model model) {
+		paging.setPageUnit(5); //한페이지에 표시되는 레코드 건수
+		paging.setPageSize(3); //페이지번호수
+		//페이징처리
+		if(vo.getPage() == null) {
+			vo.setPage(1);
+		}
+		//Paging 써서 이거 안해줘도됨(임시용이었음)
+		//int start = (vo.getPage()-1)*10+1; //시작페이지 1번째페이지로 출력
+		//int end = start+10-1; //1페이지에 10개씩 출력
+		vo.setStart(paging.getFirst());
+		vo.setEnd(paging.getLast());
+		paging.setTotalRecord(empService.getCount(vo));
+		model.addAttribute("paging", paging);
+		
 		model.addAttribute("list", empService.getSearchEmp(vo));
 		return "/emp/getSearchEmp";
 	}
