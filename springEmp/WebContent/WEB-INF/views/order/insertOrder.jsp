@@ -9,6 +9,9 @@
 </head>
 <body>
 <button type="button">상품추가</button>
+<script>
+//$("tr:last").clone().appendTo($("tbody"));이거활용해서 목록추가하기+name값 바꿔줘야함
+</script>
 <form action="insertOrder" method="post">
 	<table border="1">
 		<tr>
