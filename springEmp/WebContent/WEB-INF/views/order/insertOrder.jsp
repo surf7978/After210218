@@ -5,8 +5,10 @@
 <head>
 <meta charset="UTF-8">
 <title>order/insertOrder.jsp</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 <body>
+<button type="button">상품추가</button>
 <form action="insertOrder" method="post">
 	<table border="1">
 		<tr>
