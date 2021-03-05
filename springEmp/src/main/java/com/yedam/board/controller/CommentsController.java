@@ -23,7 +23,7 @@ public class CommentsController {
 	
 	//등록처리
 	@PostMapping("/comments")
-	public CommentsVO insertCommentsProc(CommentsVO vo) {
+	public CommentsVO insertCommentsProc(@RequestBody CommentsVO vo) {
 		commentsService.insertComments(vo);
 		if(vo.getId().equals("0")) {
 			return vo;
@@ -32,9 +32,8 @@ public class CommentsController {
 		}
 	}
 	//삭제
-	@DeleteMapping(value = "/comments/{id}") //@PostMapping에 (value = "/comments/{id}", method=RequestMethod.DELETE) 이렇게해도됨
-	public Map<String, Integer> deleteCommentsProc(CommentsVO vo
-													,@PathVariable String id) {
+	@DeleteMapping(value = "/comments")// /{id}") //@PostMapping에 (value = "/comments/{id}", method=RequestMethod.DELETE) 이렇게해도됨
+	public Map<String, Integer> deleteCommentsProc(@RequestBody CommentsVO vo){//,@PathVariable String id) {
 		int r = commentsService.deleteComments(vo);
 		return Collections.singletonMap("cnt",r);
 	}
@@ -51,8 +50,7 @@ public class CommentsController {
 	}
 	//단건조회
 	@GetMapping("/comments/{id}")
-	public CommentsVO getComments(CommentsVO vo
-									, @PathVariable String id ) {
+	public CommentsVO getComments(CommentsVO vo, @PathVariable String id ) {
 		vo.setId(id);
 		return commentsService.getComments(vo);
 	}

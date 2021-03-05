@@ -15,10 +15,18 @@
 	<delete id="deleteComments" parameterType="CommentsVO">
 		DELETE
 		FROM comments
-		WHERE id IN 
-		<foreach collection="ids" item="i" open="(" separator="," close=")">
-			#{i}
-		</foreach>
+		WHERE
+		<choose>
+			<when test="ids != null and ids.length>0">
+				ID IN 
+				<foreach collection="ids" item="i" open="(" separator="," close=")">
+					#{i}
+				</foreach>
+			</when>
+			<otherwise>
+				ID = #{id}
+			</otherwise>
+		</choose>
 	</delete>
 	<select id="getComments" resultType="CommentsVO" parameterType="CommentsVO">
 		SElECT 
@@ -103,5 +111,16 @@ END COMMENTS_INS;
 
 alter table comments add wdate date;
 update comments set wdate = sysdate;
+commit;
+
+create table users(
+id       varchar2(8) primary key,
+password varchar2(8),
+name     varchar2(20),
+role     varchar2(5));
+
+insert into users values('test','test123','관리자','Admin');
+insert into users values('user1','user1','홍길동','User');
+
 commit;
  -->

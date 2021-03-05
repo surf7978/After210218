@@ -3,7 +3,6 @@ package com.yedam.emp;
 import java.sql.Date;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.Data;
 
@@ -13,8 +12,8 @@ public class CommentsVO {
 	private String name;
 	private String content;
 	private String board_id;
-	private String out_msg;
-	@JsonIgnore private String[] ids;
+	private String out_msg; //@JsonIgnore 안보이게하기
+	private String[] ids;
 	@JsonFormat(pattern = "yyyy/MM/dd HH:mm:ss")
 	private Date wdate;
 }
