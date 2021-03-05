@@ -18,6 +18,8 @@
 </script>
 </head>
 <body>
+파라미터 ${employee }
+<hr>
 <h3>${emp.first_name }사원정보</h3>
 	사번 : ${emp.employee_id }<br />
 	이름 : ${emp.last_name } ${emp.first_name }<br />

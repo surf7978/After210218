@@ -2,7 +2,25 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.yedam.emp.service.impl.EmpMapper">
-	<select id="getSearchEmp" parameterType="emp45890" resultType="emp45890">
+	<!-- 레코드건수 -->
+	<select id="getCount" resultType="int">
+	 	SELECT COUNT(*) FROM EMPLOYEES
+	 	<where>
+	    	<if test="department_id != null and department_id != ''">
+	    		department_id = #{department_id}
+	    	</if>
+	    	<if test="job_id != null and job_id != ''">
+	    		AND job_id = #{job_id} 
+	    	</if>
+	    	<if test="first_name != null and first_name != ''">
+	    		AND upper(first_name) LIKE '%'||upper(#{first_name})||'%'
+	    	</if>
+	    </where>
+	</select>
+	
+	<select id="getSearchEmp" parameterType="empSearchVO" resultType="emp45890">
+select b.* from(select  rownum rn, a.* from(
+		<!-- 
 		SELECT     
 			e.Employee_id
 			, e.First_name
@@ -19,18 +37,43 @@
 	    FROM employees e, departments d, jobs j
 	    WHERE e.department_id = d.department_id
 	    AND e.job_id = j.job_id
+		 -->
+		 SELECT
+   			e.Employee_id
+			, e.First_name
+			, e.Last_name
+			, e.Email
+			, e.Hire_date
+			, e.job_id
+			, e.Salary
+			, e.Manager_id
+			, e.Department_id
+			, e.Phone_number
+			, d.department_name
+			, j.job_title                  
+		FROM employees e LEFT OUTER JOIN departments d
+		ON e.department_id = d.department_id
+		LEFT OUTER JOIN jobs j
+		ON e.job_id = j.job_id
+			<!-- 
+		 SELECT 
+			*
+		 FROM employees
+			 -->
 	    <where>
 	    	<if test="department_id != null and department_id != ''">
-	    		department_id = #{department_id}
+	    		AND e.department_id = #{department_id}
 	    	</if>
 	    	<if test="job_id != null and job_id != ''">
-	    		AND job_id = #{job_id} 
+	    		AND e.job_id = #{job_id} 
 	    	</if>
 	    	<if test="first_name != null and first_name != ''">
-	    		AND upper(first_name) LIKE '%'||upper(#{first_name})||'%'
+	    		AND upper(e.first_name) LIKE '%'||upper(#{first_name})||'%'
 	    	</if>
 	    </where>
-	    ORDER BY Hire_date DESC
+	    ORDER BY e.employee_id
+	    
+) a)b where rn between #{start} and #{end}
 	</select>
 	<insert id="insertEmp" parameterType="emp45890">
 		INSERT INTO employees(
@@ -98,4 +141,20 @@
 	부서명으로 검색
 	매니저 아이디로 검색
 	CITY, MANAGER의 last_name 보이는 목록 +CITY는 locations 테이블에 있음
+ -->
+<!-- 과제 
+	Paging 기능 만들기
+	+ DeptVO 
+		start, end 필드 추가 
+	1.dept_mapper.xml
+		1-1.전체건수 쿼리
+		1-2.전체조회 - 페이징 쿼리 수정
+	2.DeptMapper, DeptService, DeptServiceImpl 
+		메소드 추가
+	3.DeptController 
+		paging 코드를 복사
+	4. getSearchDept.jsp
+		4-1. <%@ taglib
+		4-2. <my:paging ~~>
+		4-3. function
  -->

@@ -12,13 +12,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import com.yedam.emp.service.EmpService;
 import com.yedam.emp.service.impl.EmpMapper;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = "classpath:/config/*-context.xml")
 public class EmpMapperClient {
-	@Autowired EmpMapper empMapper;
 	
+	@Autowired EmpMapper empMapper;
+	@Autowired EmpService empService;
 	
 	@Test
 	public void insertEmp() {
@@ -32,28 +34,28 @@ public class EmpMapperClient {
 						.phone_number("010-1111-1111")
 						.department_id("20")
 						.build();
-		int result = empMapper.insertEmp(vo);
+		int result = empService.insertEmp(vo);
 		assertEquals(result, 1);
 	}
 	
-	@Test
+	//@Test
 	public void updateEmp() {
 		EmpVO vo = EmpVO.builder()
-				.email("a@a.bbbb")
+				.email("gwe@a.bbgwe")
 				.employee_id("4000")
 				.build();
 		int result = empMapper.updateEmp(vo);
 		assertEquals(result, 1);
 	}
 	
-	@Test
+	//@Test
 	public void getSearchEmp() {
 		EmpVO vo = EmpVO.builder().first_name("na").build();
-		List<EmpVO> list = empMapper.getSearchEmp(vo);
-		System.out.println(list);
+		//List<EmpVO> list = empMapper.getSearchEmp(vo);
+		//System.out.println(list);
 	}
 	
-	@Test
+	//@Test
 	public void getEmp() {
 		EmpVO vo = new EmpVO();
 		vo.setEmployee_id("100");
