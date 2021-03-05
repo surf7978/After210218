@@ -8,7 +8,7 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<script src="./resources/json.min.js"></script>
+<script src="./resources/js/json.min.js"></script>
 <script type="text/javascript" >
 	$(function(){
 		userList();
@@ -62,7 +62,7 @@
 	function userUpdate() {
 		//수정 버튼 클릭
 		$('#btnUpdate').on('click',function(){
-			
+
 		});//수정 버튼 클릭
 	}//userUpdate
 	
@@ -70,14 +70,29 @@
 	function userInsert(){
 		//등록 버튼 클릭
 		$('#btnInsert').on('click',function(){
- 
+//			var param = {
+//							id : $("[name=id]").val()
+//							, name : $("[name=name]").val()
+//							, password : $("[name=password]").val()
+//							, role : $("[name=role]").val()
+//						};
+ 			$.ajax({
+ 				url : "user",
+ 				method : "post",
+ 				data : JSON.stringify($("#form1").serializeObject()), // JSON.stringify(param) 과 같음
+ 				contentType : 'application/json', //보낼데이터 jsom -> @requestBody
+ 				dataType : "json",				  //응답결과가 json JSON.parse()
+ 				success : function(response){
+ 					console.table(response);
+ 				}
+ 			});
 		});//등록 버튼 클릭
 	}//userInsert
 	
 	//사용자 목록 조회 요청
 	function userList() {
 		$.ajax({
-			url:'users',
+			url:'user',
 			type:'GET',
 			dataType:'json',
 			error:function(xhr,status,msg){
