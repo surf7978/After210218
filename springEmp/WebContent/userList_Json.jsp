@@ -135,7 +135,8 @@
 			<label>패스워드:</label>
 			<input type="text"  class="form-control"  name="password" >
 		</div>			
-<!-- 		<div class="form-group">
+<!-- 		
+		<div class="form-group">
 			<label >성별:</label>
 			<div class="radio">
 				<label><input type="radio"  name="gender"  value="남">남</label>
@@ -143,7 +144,8 @@
 			<div class="radio">
 				<label><input type="radio"  name="gender"  value="여">여</label>
 			</div>	
-		</div>	 -->    
+		</div>	 
+-->    
 		<div class="form-group">   
 			<label>역할:</label>
 				<select class="form-control" name="role">
