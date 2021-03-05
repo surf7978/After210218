@@ -17,6 +17,9 @@
 		<typeAlias type="com.yedam.emp.EmpVO" alias="emp45890"/>
 		<typeAlias type="com.yedam.emp.DeptVO" alias="dept43673"/>
 		<typeAlias type="com.yedam.emp.JobVO" alias="job5468"/>
+		<!-- 이렇게 패키지 째로 넣을수도있음 대신 Maaper.xml에 parameterType 적어줘야함 -->
 		<package name="com.yedam.emp" />
+		<package name="com.yedam.board" />
+		<package name="com.yedam" />
 	</typeAliases>
 </configuration>
