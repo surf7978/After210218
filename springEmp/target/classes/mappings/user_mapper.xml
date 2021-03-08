@@ -18,10 +18,12 @@
 		WHERE id = #{id}
 	</delete>
 	<update id="updateUser" parameterType="UserVO">
-		UPDATE Users SET 
-						 password = #{password}
-						, name = #{name}
-						, role = #{role}
+		UPDATE Users
+		<set>
+			<if test="password != null and password !=''">password = #{password}</if>
+			<if test="name != null and name !=''">, name = #{name}</if>
+			<if test="role != null and role !=''">, role = #{role}</if>
+		</set> 
 		WHERE id = #{id}
 	</update>
 	<select id="getUser" resultType="UserVO" parameterType="UserVO">

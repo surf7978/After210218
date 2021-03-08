@@ -38,15 +38,41 @@
 	function userDelete() {
 		//삭제 버튼 클릭
 		$('body').on('click','#btnDelete',function(){
-
+			if(! confirm('삭제할까요?')){ //이렇게 하면 간단하게 Y/N만듬
+				return;
+			}			
+			var tr = $(this).closest('tr');
+			var userId = $(this).closest('tr').find('#hidden_userId').val();
+			$.ajax({
+					url:'user/'+userId,
+					method:'DELETE',
+					dataType:'json',
+					success:function(response){
+						//userList(); 밑에처럼 하면 효율적임
+						if(response.cnt == 1){ //cnt=com.yedam.emp.controller에 적어놓은 cnt임
+							tr.remove();
+						}else{
+							alert('삭제오류');
+						}
+					}
+				});
 		}); //삭제 버튼 클릭
 	}//userDelete
 	
 	//사용자 조회 요청
 	function userSelect() {
 		//조회 버튼 클릭
-		$('body').on('click','#btnSelect',function(){
-
+		$('body').on('click','#btnSelect',function(){ //$('#btnSelect').on('click',function(){ 이렇게 안한 이유 = 생성된거라 이렇게 못함
+			var userId = $(this).closest('tr').find('#hidden_userId').val();
+			$.ajax({
+					url:'user/'+userId,
+					method:'GET',
+					contentType:'application/json;charset=utf-8',
+					dataType:'json',
+					success:function(data){
+						userSelectResult(data);
+					}
+				});
 		}); //조회 버튼 클릭
 	}//userSelect
 	
@@ -62,7 +88,22 @@
 	function userUpdate() {
 		//수정 버튼 클릭
 		$('#btnUpdate').on('click',function(){
-
+			$.ajax({
+					url:"user",
+					method:"put",
+					data:JSON.stringify($("#form1").serializeObject()),
+					contentType:"application/json",
+					dataType:"json",
+					success:function(response){
+							//폼필드 초기화
+							document.form1.reset(); //이거해주면 폼에 적은 내용 없어짐 +name="form1" 찾아감
+							
+							//tr태그 수정된 데이터 교체하든지 아니면 전체조회
+							var tr = makeTr(response);
+							var oldTr = $("td:contains('"+response.id+"')").parent();
+							oldTr.replaceWith(tr);
+						}
+			});
 		});//수정 버튼 클릭
 	}//userUpdate
 	
@@ -80,10 +121,12 @@
  				url : "user",
  				method : "post",
  				data : JSON.stringify($("#form1").serializeObject()), // JSON.stringify(param) 과 같음
- 				contentType : 'application/json', //보낼데이터 jsom -> @requestBody
- 				dataType : "json",				  //응답결과가 json JSON.parse()
+ 				contentType : 'application/json', //보낼데이터 json -> @requestBody
+ 				dataType : "json",				  //응답결과가 json -> JSON.parse()
  				success : function(response){
  					console.table(response);
+ 					document.form1.reset();
+ 					userList();
  				}
  			});
 		});//등록 버튼 클릭
@@ -106,22 +149,27 @@
 	function userListResult(data) {
 		$("tbody").empty();
 		$.each(data,function(idx,item){
-			$('<tr>')
-			.append($('<td>').html(item.id))
-			.append($('<td>').html(item.name))
-			.append($('<td>').html(item.password))
-			.append($('<td>').html(item.role))
-			.append($('<td>').html('<button id=\'btnSelect\'>조회</button>'))
-			.append($('<td>').html('<button id=\'btnDelete\'>삭제</button>'))
-			.append($('<input type=\'hidden\' id=\'hidden_userId\'>').val(item.id))
-			.appendTo('tbody');
+			var tr = makeTr(item);
+			tr.appendTo("tbody");
 		});//each
 	}//userListResult
+	
+	function makeTr(item){
+		return $('<tr>')
+		.append($('<td>').html(item.id))
+		.append($('<td>').html(item.name))
+		.append($('<td>').html(item.password))
+		.append($('<td>').html(item.role))
+		.append($('<td>').html('<button id=\'btnSelect\'>조회</button>'))
+		.append($('<td>').html('<button id=\'btnDelete\'>삭제</button>'))
+		.append($('<input type=\'hidden\' id=\'hidden_userId\'>').val(item.id));
+	}
 </script>
 </head>
 <body>
+<a href="../springEmp/">메인으로</a>
 <div class="container">
-	<form id="form1"  class="form-horizontal">
+	<form id="form1" name="form1" class="form-horizontal">
 		<h2>사용자 등록 및 수정</h2>
 		<div class="form-group">		
 			<label >아이디:</label>
@@ -168,8 +216,8 @@
 		<tr>
 			<th class="text-center">아이디</th>
 			<th class="text-center">이름</th>
-			<th class="text-center">성별</th>
-			<th class="text-center">거주지</th>
+			<th class="text-center">패스워드</th>
+			<th class="text-center">역할</th>
 		</tr>
 		</thead>
 		<tbody></tbody>
