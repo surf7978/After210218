@@ -33,4 +33,32 @@ public class UserServiceImpl implements UserService {
 		return dao.getSearchUser(vo);
 	}
 
+	
+	
+	public boolean loginCheck(UserVO vo) {
+		//단건조회
+		UserVO uservo = dao.getUser(vo);
+		//id일치하는지 체크
+		if(uservo == null) {
+			return false;
+		}
+		//pw일치여부 체크
+		if(uservo.getPassword().equals(vo.getPassword())) {
+			return true;
+		}else {
+			return false;
+		}
+	}
+
+	@Override
+	public int updatePW(UserVO vo) {
+		//단건조회
+		UserVO uservo = dao.getUser(vo);
+		//기존패스워드와 일치하는지 체크
+		if(uservo.getPassword().equals(vo.getOldPassword())) {
+			return dao.updateUser(vo);
+		}else {
+			return 0;
+		}
+	}
 }

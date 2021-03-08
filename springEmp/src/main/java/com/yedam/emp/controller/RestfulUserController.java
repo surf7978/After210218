@@ -13,11 +13,11 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.yedam.emp.service.UserService;
 import com.yedam.emp.UserVO;
+import com.yedam.emp.service.UserService;
 
-//@RestController  //@RestController 모든 메소드 ajax로 호출 메소드별로하고싶으면 각 메소드에 @ResponseBody 넣으면됨
-public class UserController {
+@RestController
+public class RestfulUserController {
 	
 	@Autowired UserService userService;
 	

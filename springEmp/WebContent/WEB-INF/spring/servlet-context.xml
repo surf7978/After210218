@@ -45,5 +45,15 @@
 		<aop:advisor pointcut-ref="trPointcut" advice-ref="txAdvice" />
 	</aop:config>
 	 -->
-	
+	<bean id="loginInterceptor" class="com.yedam.emp.common.LoginInterceptor" />
+	<!-- interceptor -->
+	<mvc:interceptors>
+		<mvc:interceptor>
+			<mvc:mapping path="/*"/>
+			<mvc:mapping path="/user"/>
+			<mvc:exclude-mapping path="/login"/>
+			<mvc:exclude-mapping path="/"/>
+			<ref bean="loginInterceptor"/>
+		</mvc:interceptor>
+	</mvc:interceptors>
 </beans>

@@ -10,4 +10,8 @@ public interface UserService {
 	int updateUser(UserVO vo);
 	UserVO getUser(UserVO vo);
 	List<UserVO> getSearchUser(UserVO vo);
+	
+	//login계열 여따 넣음
+	boolean loginCheck(UserVO vo);
+	int updatePW(UserVO vo);
 }
