@@ -37,6 +37,7 @@
 		class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
 		<beans:property name="dataSource" ref="dataSource" />
 	</beans:bean>
+	
 	<!-- @Transactional 어노테이션 처리 -->
 	<tx:annotation-driven transaction-manager="txManager" />
 
@@ -49,6 +50,7 @@
 			<tx:method name="*" />
 		</tx:attributes>
 	</tx:advice>
+	
 	<!-- TransactionManager AOP 설정 -->
 	<aop:config>
 		<aop:pointcut id="trPointcut" expression="execution(* com.yedam..*impl.*(..))" />
