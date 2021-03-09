@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,7 +8,17 @@
 <title>Insert title here</title>
 </head>
 <body>
-<a href="../springEmp/">메인으로</a>
+<a href="top">톱 페이지로</a>
+<!-- 이렇게 하면 안 됨
+<a href="../top">톱 페이지로</a>
+ -->
+<a href="../temp/top">톱 페이지로</a>
+<c:if test="${not empty SPRING_SECURITY_LAST_EXCEPTION}">
+	<font color="red">
+		${SPRING_SECURITY_LAST_EXCEPTION.message}
+		<c:remove var="SPRING_SECURITY_LAST_EXCEPTION.message" scope="session" />
+	</font>
+</c:if>
 <h3>로그인</h3>
 <form action="login" method="post">
 	<input name="id">
