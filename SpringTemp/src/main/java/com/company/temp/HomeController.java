@@ -19,39 +19,21 @@ public class HomeController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
 	
+	/**
+	 * Simply selects the home view to render by returning its name.
+	 */
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home(Locale locale, Model model) {
 		logger.info("Welcome home! The client locale is {}.", locale);
+		
 		Date date = new Date();
 		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
+		
 		String formattedDate = dateFormat.format(date);
+		
 		model.addAttribute("serverTime", formattedDate );
+		
 		return "home";
-	}
-	
-	@RequestMapping("/user/user")
-	public String userPage() {
-		return "user/user";
-	}
-	
-	@RequestMapping("/admin/admin")
-	public String adminPage() {
-		return "admin/admin";
-	}
-	
-	@RequestMapping("/top")
-	public String topPage() {
-		return "top";
-	}
-	
-	@RequestMapping("/home")
-	public String homePage() {
-		return "home";
-	}
-	
-	@RequestMapping("/loginForm")
-	public String loginForm() {
-		return "user/login";
 	}
 	
 }

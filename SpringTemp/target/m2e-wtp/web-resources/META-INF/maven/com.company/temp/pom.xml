@@ -5,7 +5,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.company</groupId>
 	<artifactId>temp</artifactId>
-	<name>springSecurity</name>
+	<name>springTemp</name>
 	<packaging>war</packaging>
 	<version>1.0.0-BUILD-SNAPSHOT</version>
 	<properties>
@@ -14,8 +14,6 @@
 		<org.aspectj-version>1.6.10</org.aspectj-version>
 		<org.slf4j-version>1.7.5</org.slf4j-version>
 		<org.log4j-version>2.9.0</org.log4j-version>
-		<org.apache.tiles-version>3.0.3</org.apache.tiles-version>
-		<org.springframework.security-version>5.2.5.RELEASE</org.springframework.security-version>
 	</properties>
 	<dependencies>
 		<!-- Spring -->
@@ -177,41 +175,6 @@
 			<artifactId>validation-api</artifactId>
 			<version>2.0.1.Final</version>
 		</dependency>
-
-		<!-- jsp tiles -->
-		<dependency>
-			<groupId>org.apache.tiles</groupId>
-			<artifactId>tiles-core</artifactId>
-			<version>${org.apache.tiles-version}</version>
-		</dependency>
-		<dependency>
-			<groupId>org.apache.tiles</groupId>
-			<artifactId>tiles-servlet</artifactId>
-			<version>${org.apache.tiles-version}</version>
-		</dependency>
-		<dependency>
-			<groupId>org.apache.tiles</groupId>
-			<artifactId>tiles-extras</artifactId>
-			<version>${org.apache.tiles-version}</version>
-		</dependency>
-
-		<!-- Spring Security -->
-		<dependency>
-			<groupId>org.springframework.security</groupId>
-			<artifactId>spring-security-web</artifactId>
-			<version>${org.springframework.security-version}</version>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.security</groupId>
-			<artifactId>spring-security-config</artifactId>
-			<version>${org.springframework.security-version}</version>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.security</groupId>
-			<artifactId>spring-security-taglibs</artifactId>
-			<version>${org.springframework.security-version}</version>
-		</dependency>
-
 
 	</dependencies>
 	<build>

@@ -10,6 +10,5 @@
 </h1>
 
 <P>  The time on the server is ${serverTime}. </P>
-<a href="./top">톱 페이지로</a>
 </body>
 </html>
