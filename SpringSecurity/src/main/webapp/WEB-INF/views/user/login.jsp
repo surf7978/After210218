@@ -25,5 +25,6 @@
 	<input name="password">
 	<button>로그인</button>
 </form>
+<a href="https://kauth.kakao.com/oauth/authorize?response_type=code&client_id=8b88c20e8232de584d13f04e421f2b48&redirect_uri=http://localhost/bank/callback">카카오 로그인</a>
 </body>
 </html>
