@@ -93,7 +93,19 @@ public class BankController {
 	
 	@ResponseBody
 	@RequestMapping("/ajaxGetBalance")
-	public Map ajaxGetBalance(BankVO vo) {
-		return null;
+	public Map<String, Object> ajaxGetBalance(BankVO vo) {
+		String access_token = 
+				//(String) request.getParameter("access_token"); 
+				"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdWQiOiIxMTAwNzcwNTMwIiwic2NvcGUiOlsiaW5xdWlyeSIsImxvZ2luIiwidHJhbnNmZXIiXSwiaXNzIjoiaHR0cHM6Ly93d3cub3BlbmJhbmtpbmcub3Iua3IiLCJleHAiOjE2MjMxOTg3MjYsImp0aSI6IjliZTE4YzcyLWVlMTQtNDA0YS1hYTgyLTFjZDgxYTc1NDNmMiJ9.a7M8AbgKlhRNc7qcJhWHva2UaN2J9sAwd_H4kKURiiQ";
+		Map<String, Object> map = bankAPI.getBalance(vo, access_token);
+		return map;
+	}
+	
+	@RequestMapping("/getOrgAuthorize")
+	public String getOrgAuthorize() {
+		Map<String, Object> map = bankAPI.getOrgAuthorize();
+		System.out.println("access_token 값은 : "+map.get("access_token"));
+		//결과 access_token 값은 : eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdWQiOiJNMjAyMTExNjg1Iiwic2NvcGUiOlsib29iIl0sImlzcyI6Imh0dHBzOi8vd3d3Lm9wZW5iYW5raW5nLm9yLmtyIiwiZXhwIjoxNjIzMjIzOTg5LCJqdGkiOiJiOTZmNmY2My04N2FlLTQ5NTAtYjBiNC1mY2QwMjA2OGJjZjQifQ.2R5aMex2iyJ8dT46VPCl7vxKvk-ewMS4cpTyjFpuNoE
+		return "home";
 	}
 }

@@ -149,6 +149,11 @@ public class BankAPI {
 		return str.substring(str.length()-9);//13자리(str.length())중 9자리수부터 자름
 	}
 	
+	public String getRand32() { //32byte 난수 만들기\
+		
+		return "";
+	}
+	
 	public HashMap<String, Object> getBalance(BankVO vo, String access_token) {
 		// 요청하는 클라이언트마다 가진 정보가 다를 수 있기에 HashMap타입으로 선언
 				HashMap<String, Object> map = new HashMap<>();
@@ -188,4 +193,60 @@ public class BankAPI {
 				}
 				return map;
 	}
+	
+	public HashMap<String, Object> getOrgAuthorize() {
+		HashMap<String, Object> map = new HashMap<>();
+		String reqURL = host + "/oauth/2.0/token"; // 여기 바꿀것
+
+		try {
+			URL url = new URL(reqURL);
+			HttpURLConnection conn = (HttpURLConnection) url.openConnection(); // url요청해서 url 받아오는 것??
+																				// HttpURLConnection는 자바에서 제공하는 것.
+
+			// POST 요청을 하려면 기본값이 false인 setDoOutput을 true로 설정해야 한다.
+			conn.setRequestMethod("POST"); // HEADER+BODY 파라미터값
+			conn.setDoOutput(true); // BODY가 있다고 알려주는?
+			
+			//header 타입 바꾸기
+			conn.setRequestProperty("Content-Type", "application/x-www-form-urlencoded; charset=UTF-8");
+			
+			StringBuilder sb = new StringBuilder();
+			sb.append("client_id=").append(client_id)
+			  .append("&client_secret=").append(client_secret)
+			  .append("&scope=").append("oob")
+			  .append("&grant_type=").append("client_credentials");
+
+			// POST 요청에 필요로 요구하는 파라미터 스트림을 통해 전송
+			OutputStream os = conn.getOutputStream();
+			BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(os, "UTF-8"));// 자바교재2권 1021쪽에 설명
+
+			bw.write(sb.toString());
+			bw.flush();
+			bw.close();
+
+			// 결과 코드가 200이라면 성공
+			int responseCode = conn.getResponseCode();
+			System.out.println("responseCode : " + responseCode);
+
+			// 요청을 통해 얻은 JSON타입의 Response 메세지 읽어오기
+			BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+			String line = "";
+			String result = "";
+			while ((line = br.readLine()) != null) {
+				result += line;
+			}
+
+			System.out.println("response body : " + result);
+
+			Gson gson = new Gson();
+			map = gson.fromJson(result, HashMap.class);
+
+			br.close();
+			bw.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+
+		return map;
+	} 
 }

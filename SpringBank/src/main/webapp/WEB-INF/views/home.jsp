@@ -21,5 +21,7 @@
 	access_token:${access_token}
 </div>
  -->
+ <a href="getOrgAuthorize">기관인증</a>
+ <a href="getBiz">크롤링</a>
 </body>
 </html>
