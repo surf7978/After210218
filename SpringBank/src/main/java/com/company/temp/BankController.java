@@ -57,8 +57,8 @@ public class BankController {
 	public String userInfo(HttpSession session, HttpServletRequest request) {
 		//String access_token = (String) session.getAttribute("access_token");
 		
-		String access_token = (String) request.getParameter("access_token");
-		String use_num = "1100770530";
+		String access_token = "q6pYjKTHGSI4NLPFpn5X5FwnYLAfSu"; //(String) request.getParameter("access_token");
+		String use_num = "";
 		Map<String, Object> userInfo = bankAPI.getUserInfo(access_token, use_num);
 		System.out.println("userInfo 값은 : "+userInfo);
 		
