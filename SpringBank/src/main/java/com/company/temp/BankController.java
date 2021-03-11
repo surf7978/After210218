@@ -49,7 +49,6 @@ public class BankController {
 		//session에 저장
 		session.setAttribute("access_token", access_token);
 		
-		
 		return "home";
 	}
 	
@@ -57,7 +56,7 @@ public class BankController {
 	public String userInfo(HttpSession session, HttpServletRequest request) {
 		//String access_token = (String) session.getAttribute("access_token");
 		
-		String access_token = "q6pYjKTHGSI4NLPFpn5X5FwnYLAfSu"; //(String) request.getParameter("access_token");
+		String access_token = (String) request.getParameter("access_token"); //"q6pYjKTHGSI4NLPFpn5X5FwnYLAfSu"; 
 		String use_num = "";
 		Map<String, Object> userInfo = bankAPI.getUserInfo(access_token, use_num);
 		System.out.println("userInfo 값은 : "+userInfo);
