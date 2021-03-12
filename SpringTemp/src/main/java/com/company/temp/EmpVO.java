@@ -16,4 +16,8 @@ public class EmpVO {
 	private String product_date;
 	private String company;
 	private String manager_id;
+	private String sale_qty;
+	private String member_id;
+	private String sale_seq;
+	
 }

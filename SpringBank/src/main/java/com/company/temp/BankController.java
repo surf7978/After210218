@@ -108,4 +108,13 @@ public class BankController {
 		//결과 access_token 값은 : eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdWQiOiJNMjAyMTExNjg1Iiwic2NvcGUiOlsib29iIl0sImlzcyI6Imh0dHBzOi8vd3d3Lm9wZW5iYW5raW5nLm9yLmtyIiwiZXhwIjoxNjIzMjIzOTg5LCJqdGkiOiJiOTZmNmY2My04N2FlLTQ5NTAtYjBiNC1mY2QwMjA2OGJjZjQifQ.2R5aMex2iyJ8dT46VPCl7vxKvk-ewMS4cpTyjFpuNoE
 		return "home";
 	}
+	
+	@RequestMapping("/getOrgAccessTokenRestTemplate")
+	public String getOrgAccessTokenRestTemplate() {
+		Map<String, Object> map = bankAPI.getOrgAccessTokenRestTemplate();
+		System.out.println("access_token 값은 : "+map.get("access_token"));
+		//결과 access_token 값은 : eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdWQiOiJNMjAyMTExNjg1Iiwic2NvcGUiOlsib29iIl0sImlzcyI6Imh0dHBzOi8vd3d3Lm9wZW5iYW5raW5nLm9yLmtyIiwiZXhwIjoxNjIzMzA2NDg3LCJqdGkiOiJhMWUyODdiMy1hMmFhLTQ5YzEtYmVjNi0wOGU3ZWE4MTUyYTYifQ.u7LJLTQAJDFYNawsKxYUBri-Cd6yKsejXFNcoC69PPU
+		return "home";
+	}
+	
 }

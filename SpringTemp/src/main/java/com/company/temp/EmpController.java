@@ -5,7 +5,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.company.service.EmpService;
 
@@ -34,5 +36,17 @@ public class EmpController {
 	public String getSearchEmp(EmpVO vo, Model model) {
 		model.addAttribute("list", empService.getSearchEmp(vo));
 		return "/temp/getSearchEmp";
+	}
+	
+	@RequestMapping("/getProduct") 
+	@ResponseBody
+	public EmpVO getProduct(@RequestBody EmpVO vo) {
+		return empService.getEmp(vo);
+	}
+	
+	@RequestMapping("/insertProduct") 
+	@ResponseBody
+	public int insertProduct(@RequestBody EmpVO vo) {
+		return empService.insertEmp(vo);
 	}
 }

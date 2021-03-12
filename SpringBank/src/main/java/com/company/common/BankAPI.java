@@ -11,8 +11,14 @@ import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.Map;
 
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
 import org.springframework.stereotype.Component;
+import org.springframework.util.LinkedMultiValueMap;
+import org.springframework.util.MultiValueMap;
+import org.springframework.web.client.RestTemplate;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonElement;
@@ -26,6 +32,7 @@ public class BankAPI {
 	String client_secret = "beb1d02a-86b6-4be2-be9d-2f38e4da6c10";
 	String redirect_uri = "http://localhost/temp/callback";
 	String use_org_code = "M202111685";
+	String org_access_token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdWQiOiJNMjAyMTExNjg1Iiwic2NvcGUiOlsib29iIl0sImlzcyI6Imh0dHBzOi8vd3d3Lm9wZW5iYW5raW5nLm9yLmtyIiwiZXhwIjoxNjIzMzA2NDg3LCJqdGkiOiJhMWUyODdiMy1hMmFhLTQ5YzEtYmVjNi0wOGU3ZWE4MTUyYTYifQ.u7LJLTQAJDFYNawsKxYUBri-Cd6yKsejXFNcoC69PPU";
 
 	public HashMap<String, Object> getAccessToken(String authorize_code) {
 		HashMap<String, Object> access = new HashMap<>();
@@ -249,4 +256,25 @@ public class BankAPI {
 
 		return map;
 	} 
+	
+	public Map<String, Object> getOrgAccessTokenRestTemplate() {
+		String reqURL = host + "/oauth/2.0/token";   
+        MultiValueMap<String, String> param = new LinkedMultiValueMap<String, String>();
+        param.add("client_id", client_id);
+        param.add("client_secret", client_secret);
+        param.add("scope", "oob");
+        param.add("grant_type", "client_credentials");
+
+        HttpHeaders headers = new HttpHeaders();
+        headers.set("Content-Type", "application/x-www-form-urlencoded; charset=UTF-8");
+
+        HttpEntity<MultiValueMap<String, String>> request = 
+        		new HttpEntity<MultiValueMap<String, String>>(param, headers);
+        
+        
+        //Rest객체가 기존에 했던 API 소스코드 다 만들어줌
+        RestTemplate restTemplate = new RestTemplate();
+        Map map = restTemplate.postForObject(reqURL, request, Map.class);
+        return map;
+	}
 }
