@@ -33,8 +33,8 @@
 				dataType : "json", 
 				success : function(response){
 					console.log(response);
-					var getProduct = window.open('./getEmp','emp','width=500, height=800');
-					//getProduct.write(product_id);써서 출력하기?
+					var getProduct = window.open('./getEmp','emp','width=500, height=800'); //여기 emp는 걍 창이름임...
+					getProduct.write();
 				},
 				error:function(xhr,status,msg){
 					console.log("상태값 : "+status+", Http에러메세지 : "+msg);
