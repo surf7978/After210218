@@ -49,12 +49,20 @@
       		//ajax 호출 
       		$.ajax({
       			//url : "http://localhost/exam/insertSlip",
+      			//url : "/exam/insertSlip", //이렇게 적어도 됨
+      			
       			//url : "http://192.168.0.83/exam/insertSlip", //blocked by CORS policy에러뜸 = ajax는 다른 도메인에 요청 불가능 +저쪽에서 ajax되게 jsoup 처리해주면 가능
-      			url : "/exam/insertSlip",
-				data : JSON.stringify(list), 
+      			//도메인 다를경우 servlet으로 하면 됨
+      			url : "insertSlip", //servlet으로 보낼 때는 servlet안에 적은 명칭으로
+				//data : JSON.stringify(list), 
+				data : {param :JSON.stringify(list)}, //servlet으로 보낼때는 이렇게
+				
       			method : 'post',
-      			contentType:'application/json;charset=utf-8', //보낼때는 contentType, 받을때는 contextType
+      			
+      			//servlet으로 할 때는 contentType json으로 넘겨주면안됨
+      			//contentType:'application/json;charset=utf-8', //보낼때는 contentType, 받을때는 contextType
 				dataType : "json", //json으로 받겠다
+				
 				success : function(response){
 					console.log(response.cnt); //cnt = exam2의 Map에 있는 key값
 				},
