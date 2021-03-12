@@ -38,6 +38,7 @@ public class EmpController {
 		return "/temp/getSearchEmp";
 	}
 	
+	
 	@RequestMapping("/getProduct") 
 	@ResponseBody
 	public EmpVO getProduct(@RequestBody EmpVO vo) {

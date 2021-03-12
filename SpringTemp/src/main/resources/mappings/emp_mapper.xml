@@ -8,14 +8,16 @@
 		 FROM PRODUCT_TBL_10
 	</select>
 	<insert id="insertEmp" parameterType="empVO">
-		INSERT INTO PRODUCT_TBL_10(
+		INSERT INTO SALE_TBL_10(
 							product_id 
 							, sale_qty
-							, manager_id
+							, member_id
+							, sale_seq
 							) VALUES(
 							#{product_id}
 							, #{sale_qty}
-							, #{manager_id}
+							, #{member_id}
+							, #{sale_seq}
 							)
 	</insert>
 							<!-- 
@@ -39,7 +41,7 @@
 		 WHERE product_id = #{product_id}
 	</select>
 	<insert id="insertProduct" parameterType="empVO">
-		INSERT INTO SALE_TBL_10(
+			INSERT INTO SALE_TBL_10(
 							product_id 
 							, sale_qty
 							, member_id
