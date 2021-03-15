@@ -1,0 +1,72 @@
+오픈API 내꺼 KEY
+Client ID         cc16bd49-236f-4f63-9e08-c2a54ddcad24
+Client Secret    beb1d02a-86b6-4be2-be9d-2f38e4da6c10
+Callback URL    http://localhost:8880/html/callback.html
+
+테스트하는 곳   http://localhost:8880/ 만 치면됨
+
+이용기관코드    M202111685
+은행거래고유번호 이용기관코드+U000000001
+
+Authorization Code      poNVvBzMT41MaIVtFh4m6YjEKiSr9U
+
+
+조회 결과
+{
+    "api_tran_id": "3415e22c-8e73-4a6d-90f4-a01e7fa34a2f",
+    "rsp_code": "A0000",
+    "rsp_message": "",
+    "api_tran_dtm": "20210310100324188",
+    "user_seq_no": "1100770530",
+    "user_ci": "BzdJW5z1GeUtahQJO2MY/+Dm2X7fa6APUR+wJSMrBLW1kOyb1eOhUpgMY1E7ukhsQ08JsrHTdppZxRN+JmZF0Q==",
+    "user_name": "윤태현",
+    "res_cnt": "2",
+    "res_list": [
+        {
+            "fintech_use_num": "120211168588932135251405",
+            "account_alias": "",
+            "bank_code_std": "011",
+            "bank_code_sub": "0000000",
+            "bank_name": "NH농협은행",
+            "account_num_masked": "123456778***",
+            "account_holder_name": "윤태현",
+            "account_holder_type": "P",
+            "inquiry_agree_yn": "Y",
+            "inquiry_agree_dtime": "20210310100204",
+            "transfer_agree_yn": "Y",
+            "transfer_agree_dtime": "20210310100204",
+            "payer_num": "20210310319681334036",
+            "savings_bank_name": "",
+            "account_seq": "",
+            "account_type": "1"
+        },
+        {
+            "fintech_use_num": "120211168588932135259465",
+            "account_alias": "",
+            "bank_code_std": "012",
+            "bank_code_sub": "0000000",
+            "bank_name": "농협중앙회",
+            "account_num_masked": "3560009284***",
+            "account_holder_name": "윤태현",
+            "account_holder_type": "P",
+            "inquiry_agree_yn": "Y",
+            "inquiry_agree_dtime": "20210310094512",
+            "transfer_agree_yn": "Y",
+            "transfer_agree_dtime": "20210310094512",
+            "payer_num": "20210310319681332341",
+            "savings_bank_name": "",
+            "account_seq": "",
+            "account_type": "1"
+        }
+    ]
+}
+
+카카오 API
+
+네이티브 앱 키	eb9b473966fd85d8e9fd01f94a4a844b
+REST API 키	8b88c20e8232de584d13f04e421f2b48
+JavaScript 키	9b509b43f2db0ef3e67d546ab9894fc3
+Admin 키		eba9f1bc828737922f12bb5f8659e619
+
+
+

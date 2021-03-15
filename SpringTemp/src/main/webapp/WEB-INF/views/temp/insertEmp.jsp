@@ -53,9 +53,9 @@
 		  		url : "/temp/insertProduct",
 				data : JSON.stringify({
 							product_id : product_id
-							, sale_qty:sale_qty
-							, member_id:member_id
-							, sale_seq:sale_seq
+							, sale_qty : sale_qty
+							, member_id : member_id
+							, sale_seq : sale_seq
 						}), 
 		  		method : 'post',
 		  		contentType:'application/json;charset=utf-8', //보낼때는 contentType, 받을때는 contextType
