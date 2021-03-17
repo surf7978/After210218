@@ -53,9 +53,9 @@
 		  		url : "/temp/insertProduct",
 				data : JSON.stringify({
 							product_id : product_id
-							, sale_qty:sale_qty
-							, member_id:member_id
-							, sale_seq:sale_seq
+							, sale_qty : sale_qty
+							, member_id : member_id
+							, sale_seq : sale_seq
 						}), 
 		  		method : 'post',
 		  		contentType:'application/json;charset=utf-8', //보낼때는 contentType, 받을때는 contextType
@@ -86,11 +86,11 @@
 	product_date   <form:input type="text" path="product_date" /><form:errors path="product_date" cssClass="error"/><br>
 	company   <form:input type="text" path="company" /><form:errors path="company" cssClass="error"/><br>
 	manager_id   <form:input type="text" path="manager_id" /><form:errors path="manager_id" cssClass="error"/><br>
-	<button type="button" id="btngetSearchEmp">전체조회</button><br>	
 	<button type="submit">저장</button>
 	<button type="reset">초기화</button><br/>
 </form:form>
  -->
+	<button type="button" id="btngetSearchEmp">전체조회</button><br>	
 	product_id <input name="product_id1"><br>
 	<button type="button" id="btngetProduct">선택조회</button><br>	
 	product_id <input name="product_id2"><br>
